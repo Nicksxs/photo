@@ -342,7 +342,9 @@ class IndexAction extends Action {
         //$password = md5($_POST['password']);
         $res = $User->where($condition)->limit(1)->select();
         if (isset($res[0])) {
-            echo "<strong>Hello ".$res[0]['name']."</strong>";
+            $_SESSION['username'] = $_POST['username'];
+            $this->redirect('Photo/index','',0,'');
+            //echo "<strong>Hello ".$res[0]['name']."</strong>";
         }
 
     }
