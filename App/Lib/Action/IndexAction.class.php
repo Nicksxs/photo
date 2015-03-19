@@ -12,7 +12,32 @@ class IndexAction extends Action {
     }
 
     public function index() {
-        $this->display();
+        if (isset($_POST['username'])&&isset($_POST['password'])&&$_POST['username']!=''&&$_POST['password']!='') {
+            # code...
+            $User = M('User');
+            $condition['name'] = $_POST['username'];
+            $condition['password'] = md5($_POST['password']);
+            $res = $User->where($condition)->limit(1)->select();
+            if (isset($res[0])) {
+                $_SESSION['username'] = $_POST['username'];
+                $this->redirect('Photo/index','',0,'');
+                exit();
+                //echo "<strong>Hello ".$res[0]['name']."</strong>";
+            }
+            else{
+                $this->assign('try_login_name', htmlspecialchars($_POST['username']));
+                $this->assign('error_message', 'incorrect username or password');
+                $this->display();
+                exit();
+            }
+        }elseif (count($_POST) > 0) {
+            # code...
+            $this->assign('error_message', 'please input username and password');
+            $this->display();
+            exit();
+        }else{
+            $this->display();
+        }
     }
 
     public function origin()
