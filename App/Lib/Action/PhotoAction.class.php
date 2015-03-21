@@ -35,4 +35,40 @@ class PhotoAction extends Action
 		
 		$this->display();
 	}
+
+	public function upload() {
+        if (!empty($_FILES)) {
+            import("@.ORG.UploadFile");
+            $config=array(
+                'allowExts'=>array('jpg','gif','png'),
+                'savePath'=>'./Public/upload/',
+                'saveRule'=>'time',
+            );
+            $upload = new UploadFile($config);
+            $upload->imageClassPath="@.ORG.Image";
+            $upload->thumb=true;
+            $upload->thumbMaxHeight=100;
+            $upload->thumbMaxWidth=100;
+            if (!$upload->upload()) {
+                $this->error($upload->getErrorMsg());
+            } else {
+                $info = $upload->getUploadFileInfo();
+                $this->assign('filename', $info[0]['savename']);
+            }
+            //print_r($upload);
+            $info = $upload->getUploadFileInfo();
+            var_dump($info[0]);
+            $Photo = M("Photo");
+            $data['uid'] = $_SESSION['uid'];
+            $data['time'] = time();
+            $data['pname'] = $info[0]['savename'];
+            $data['path'] = $info[0]['savepath'];
+            $data['hash'] = $info[0]['hash'];
+            $res = $Photo->add($data);
+            print_r($res);
+            echo "<br>";
+            echo $_SESSION['uid'];
+        }
+        $this->display(index);
+    }
 }
