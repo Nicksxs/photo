@@ -60,10 +60,14 @@ class PhotoAction extends Action
             var_dump($info[0]);
             $Photo = M("Photo");
             $data['uid'] = $_SESSION['uid'];
-            $data['time'] = time();
+            $phptime = time();
+            $mysqltime = date("Y-m-d H:i:s", $phptime);
+            //$phptime = strtotime($mysqltime);
+            $data['time'] = $mysqltime;
             $data['pname'] = $info[0]['savename'];
             $data['path'] = $info[0]['savepath'];
             $data['hash'] = $info[0]['hash'];
+            print_r($data);
             $res = $Photo->add($data);
             print_r($res);
             echo "<br>";
