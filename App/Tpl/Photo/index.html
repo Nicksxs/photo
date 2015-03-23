@@ -8,21 +8,35 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
+		<div class="row header" style="height: 43px; background-color: rgba(4, 40, 71, 0.8); margin-bottom: 10px">
+			<div class="col-md-4"></div>
 			<div class="col-md-4"></div>
 			<div class="col-md-4">
-				<form action="__URL__/upload" method="post" enctype="multipart/form-data">
+				<div class="col-sm-4 col-sm-offset-8">
+					<h3>{$username}</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<form class="form-inline" action="__URL__/upload" method="post" enctype="multipart/form-data">
   					<div class="form-group">
-  						<label for="imageUpload">分享图片</label>
+  						<label class="sr-only" for="feeling">想法</label>
+  						<input id="feeling" type="text" name="feelings" />
+  					</div>
+  					<div class="form-group">
+  						<label class="sr-only" for="imageUpload">图片文件</label>
   						<input id="imageUpload" type="file" name="files[]"/>
-  						<input name="" value="上传" type="submit" />
+  					</div>
+  					<div class="form-group">
+  						<label class="sr-only" for="uploadbtn">上传</label>
+  						<input id="uploadbtn" name="" value="上传" type="submit" />
   					</div>
 				</form>
 			</div>
-			<div class="col-md-4"></div>
-			
+			<div class="col-md-3"></div>
 		</div>
-
 	</div>
 
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">

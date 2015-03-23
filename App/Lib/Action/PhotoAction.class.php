@@ -15,10 +15,14 @@ class PhotoAction extends Action
 	public function index()
 	{
 		$uid = $_SESSION['uid'];
+		$User = M("user");
+		$condition['uid'] = $uid;
+		$username = $User->where($condition)->field("name")->select();
+		$username = $username[0]['name'];
 		$user_photo_arr = array();
-		echo $uid;
+		//echo $uid;
 		$user_photo_arr[] = $uid;
-		echo "<br />";
+		//echo "<br />";
 		$condition['uid'] = $uid;
 		$rela = M("relationship");
 		$ruid_arr = $rela->where($condition)->select();
@@ -32,7 +36,7 @@ class PhotoAction extends Action
 		print_r($res_arr);
 		//$this->display();
 
-		
+		$this->assign('username', $username);
 		$this->display();
 	}
 
