@@ -14,14 +14,52 @@ class PhotoAction extends Action
 
 	public function index()
 	{
+		if (!empty($_FILES)) {
+            import("@.ORG.UploadFile");
+            $config=array(
+                'allowExts'=>array('jpg','gif','png'),
+                'savePath'=>'./Public/upload/',
+                'saveRule'=>'time',
+            );
+            $upload = new UploadFile($config);
+            $upload->imageClassPath="@.ORG.Image";
+            $upload->thumb=true;
+            $upload->thumbMaxHeight=100;
+            $upload->thumbMaxWidth=100;
+            if (!$upload->upload()) {
+                $this->error($upload->getErrorMsg());
+            } else {
+                $info = $upload->getUploadFileInfo();
+                $this->assign('filename', $info[0]['savename']);
+            }
+            //print_r($upload);
+            $info = $upload->getUploadFileInfo();
+            //var_dump($info[0]);
+            $Photo = M("Photo");
+            $data['uid'] = $_SESSION['uid'];
+            $phptime = time();
+            $mysqltime = date("Y-m-d H:i:s", $phptime);
+            //$phptime = strtotime($mysqltime);
+            $data['time'] = $mysqltime;
+            $data['pname'] = $info[0]['savename'];
+            $data['path'] = $info[0]['savepath'];
+            $data['hash'] = $info[0]['hash'];
+            $data['impression'] = $_POST['feelings'];
+            //print_r($data);
+            $res = $Photo->add($data);       //将图片信息存进数据库
+            //print_r($res);
+            //echo "<br>";
+            //echo $_SESSION['uid'];
+        }
+
 		$uid = $_SESSION['uid'];
 		$User = M("user");
 		$condition['uid'] = $uid;
-		$username = $User->where($condition)->field("name")->select();
+		$username = $User->where($condition)->field("name")->limit(1)->select();    //找出当前用户
 		$username = $username[0]['name'];
 		$user_photo_arr = array();
 		//echo $uid;
-		$user_photo_arr[] = $uid;
+		$user_photo_arr[] = $uid;     //把自己也放入用户数组
 		//echo "<br />";
 		$condition['uid'] = $uid;
 		$rela = M("relationship");
@@ -32,10 +70,22 @@ class PhotoAction extends Action
 		}
 		$map['uid'] = array('in', $user_photo_arr);
 		$Photo = M("photo");
-		$res_arr = $Photo->where($map)->select();
-		print_r($res_arr);
+		$res_arr = $Photo->where($map)->field("uid, pname, path, impression")->order('time desc')->select();
+		// 找出自己以及关注的用户发布的图片信息
+		$i = 0;
+		$user_arr = $User->where($map)->field('uid, name')->select();
+		$user_map = array();
+		foreach ($user_arr as $value) {
+			$user_map[$value['uid']] = $value['name'];
+		}
+		foreach ($res_arr as &$value) {
+			$value['name'] = $user_map[$value['uid']];
+			$value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+		}
+		//echo "hello<br />";
+		//print_r($res_arr);
 		//$this->display();
-
+		$this->assign('photo_array', $res_arr);
 		$this->assign('username', $username);
 		$this->display();
 	}
@@ -61,7 +111,7 @@ class PhotoAction extends Action
             }
             //print_r($upload);
             $info = $upload->getUploadFileInfo();
-            var_dump($info[0]);
+            //var_dump($info[0]);
             $Photo = M("Photo");
             $data['uid'] = $_SESSION['uid'];
             $phptime = time();
@@ -71,12 +121,13 @@ class PhotoAction extends Action
             $data['pname'] = $info[0]['savename'];
             $data['path'] = $info[0]['savepath'];
             $data['hash'] = $info[0]['hash'];
-            print_r($data);
+            $data['impression'] = $_POST['feelings'];
+            //print_r($data);
             $res = $Photo->add($data);
-            print_r($res);
-            echo "<br>";
-            echo $_SESSION['uid'];
+            //print_r($res);
+            //echo "<br>";
+            //echo $_SESSION['uid'];
         }
-        $this->display(index);
+        $this->display('index');
     }
 }
