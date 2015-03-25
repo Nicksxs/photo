@@ -7,6 +7,7 @@
 
 class IndexAction extends Action {
 
+    $signup = 0;
     protected function _initialize() {
         header("Content-Type:text/html; charset=utf-8");
     }
@@ -300,7 +301,7 @@ class IndexAction extends Action {
     public function mail() {
         //现在暂不支持gmail邮箱和附件上传，建议使用新浪邮箱测试。注意需要开启你邮箱的smtp功能。
         $mail = new SaeMail();
-        $ret = $mail->quickSend('luofei614@sina.com', '邮件标题', '邮件内容', 'saemailtest@sina.com', '123456');
+        $ret = $mail->quickSend('nicksxs@163.com', 'Test', 'Hello', '736886864@qq.com', 'sxs@19901202');
         if ($ret === false) {
             var_dump($mail->errno(), $mail->errmsg());
         } else {
@@ -372,6 +373,13 @@ class IndexAction extends Action {
             //echo "<strong>Hello ".$res[0]['name']."</strong>";
         }
 
+    }
+
+    public function signup()
+    {
+        # code...
+        $signup = 1;
+        $this->display('index');
     }
 
 }

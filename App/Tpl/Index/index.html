@@ -8,38 +8,88 @@
 </head>
 <body>
 	<div class="container">
-		<strong>Hello World</strong>
-		<a href="__URL__/origin">origin</a>
-		<div class="row">
+		<!-- <strong>Hello World</strong>
+		<a href="__URL__/origin">origin</a> -->
+		<div class="row header" style="height: 60px; background-color: rgba(4, 40, 71, 0.8); margin-bottom: 10px">
 			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<div class="err_msg">
-						<p class="text-center">{$error_message}</p>
-				</div>
+			<div class="col-md-4"></div>
+			<div class="col-md-4"></div>
+		</div>
+		<if condition="$signup eq 0">
+			<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4 login-man" style="margin-top: 20px; border: 1px solid #042845; padding-top: 20px">
 				<form class="form-horizontal" action="__URL__/index" method="post">
 					<div class="form-group">
-						<label for="inputUsername" class="col-sm-4 control-label">Username</label>
-						<div class="col-sm-8">
+						<label for="inputUsername" class="col-sm-3 control-label">用户名</label>
+						<div class="col-sm-9">
 							<input type="text" class="form-control" name="username" id="inputUsername" placeholder="Username" value="{$try_login_name}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputPassword" class="col-sm-4 control-label">Password</label>
-						<div class="col-sm-8">
+						<label for="inputPassword" class="col-sm-3 control-label">密　码</label>
+						<div class="col-sm-9">
 							<input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-offset-1 col-sm-8">
-							<a href="">forget password</a>
+							<a href="">忘记密码</a>
 						</div>
 						<div class="col-sm-3">
 							<button type="submit" class="btn btn-default">Sign in</button>
 						</div>
 					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-1 col-sm-4">
+							<a href="__URL__/signup">新用户注册</a>
+						</div>
+						<div class="col-sm-7"></div>
+					</div>
 				</form>
+				<div class="err_msg">
+						<p class="text-center">{$error_message}</p>
+				</div>
 			</div>
 			<div class="col-md-4"></div>
+		<else />
+			<div class="row">
+			<div class="col-md-4"></div>
+			<div class="col-md-4 login-man" style="margin-top: 20px; border: 1px solid #042845; padding-top: 20px">
+				<form class="form-horizontal" action="__URL__/index" method="post">
+					<div class="form-group">
+						<label for="inputUsername" class="col-sm-3 control-label">用户名</label>
+						<div class="col-sm-9">
+							<input type="text" class="form-control" name="username" id="inputUsername" placeholder="Username" value="{$try_login_name}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPassword" class="col-sm-3 control-label">密　码</label>
+						<div class="col-sm-9">
+							<input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-1 col-sm-8">
+							<a href="">忘记密码</a>
+						</div>
+						<div class="col-sm-3">
+							<button type="submit" class="btn btn-default">Sign in</button>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-offset-1 col-sm-4">
+							<a href="__URL__/signup">新用户注册</a>
+						</div>
+						<div class="col-sm-7"></div>
+					</div>
+				</form>
+				<div class="err_msg">
+						<p class="text-center">{$error_message}</p>
+				</div>
+			</div>
+			<div class="col-md-4"></div>
+	    </if>
 		</div>
 		
 	</div>
