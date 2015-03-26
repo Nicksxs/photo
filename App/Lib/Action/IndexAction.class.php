@@ -7,7 +7,7 @@
 
 class IndexAction extends Action {
 
-    $signup = 0;
+    static $_global_arr = array('signup' => 0);
     protected function _initialize() {
         header("Content-Type:text/html; charset=utf-8");
     }
@@ -378,7 +378,7 @@ class IndexAction extends Action {
     public function signup()
     {
         # code...
-        $signup = 1;
+        $_global_arr['signup'] = 1;
         $this->display('index');
     }
 
