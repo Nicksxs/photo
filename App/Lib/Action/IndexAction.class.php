@@ -13,6 +13,7 @@ class IndexAction extends Action {
     }
 
     public function index() {
+        $this->assign('signup',$_global_arr['signup']);
         if (isset($_POST['username'])&&isset($_POST['password'])&&$_POST['username']!=''&&$_POST['password']!='') {
             # code...
             $User = M('User');

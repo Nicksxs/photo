@@ -1,0 +1,42 @@
+@charset 'utf-8';
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.account {
+  max-width: 320px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.account .account-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.account .account-header svg path {
+  fill: #2ecc71;
+}
+.account .account-footer {
+  margin-top: 30px;
+  font-size: 14px;
+  text-align: center;
+}
+.account a {
+  color: #2ecc71;
+}
+.account .form-control {
+  border-width: 2px;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+.account .form-control:focus {
+  border-color: #2ecc71;
+}
+.account .btn {
+  width: 100%;
+  background-color: #40d47e;
+  outline: none;
+  border: 2px solid #2ecc71;
+  border-radius: 0;
+  color: #fff;
+}
