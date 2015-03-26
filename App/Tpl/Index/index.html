@@ -60,46 +60,27 @@
     			</div>
     			<button class="btn btn-lg" type="submit" data-loading-text="数据提交中...">登录</button>
     			<p class="account-footer">
-    			  没有账号？<a href="/signup">创建一个账号</a>
+    			  没有账号？<a href="__URL__/signup">创建一个账号</a>
     			</p>
+    			<p class="text-center">{$error_message}</p>
 			</form>
 		<else />
-			<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4 login-man" style="margin-top: 20px; border: 1px solid #042845; padding-top: 20px">
-				<form class="form-horizontal" action="__URL__/index" method="post">
-					<div class="form-group">
-						<label for="inputUsername" class="col-sm-3 control-label">用户名</label>
-						<div class="col-sm-9">
-							<input type="text" class="form-control" name="username" id="inputUsername" placeholder="Username" value="{$try_login_name}">
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="inputPassword" class="col-sm-3 control-label">密　码</label>
-						<div class="col-sm-9">
-							<input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-1 col-sm-8">
-							<a href="">忘记密码</a>
-						</div>
-						<div class="col-sm-3">
-							<button type="submit" class="btn btn-default">Sign in</button>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-1 col-sm-4">
-							<a href="__URL__/signup">新用户注册</a>
-						</div>
-						<div class="col-sm-7"></div>
-					</div>
-				</form>
-				<div class="err_msg">
-						<p class="text-center">{$error_message}</p>
-				</div>
-			</div>
-			<div class="col-md-4"></div>
+			<form class="account" id="formSignup" action="__URL__/signup" method="post">
+    			<div class="form-group">
+      				<input type="text" class="form-control input-lg" name="username" placeholder="用户名" value="{$try_login_name}">
+    			</div>
+    			<div class="form-group">
+      				<input type="text" class="form-control input-lg" name="email" placeholder="电子邮件地址">
+    			</div>
+    			<div class="form-group">
+      				<input type="password" class="form-control input-lg" name="password" placeholder="密码">
+    			</div>
+    			<button class="btn btn-lg" type="submit" data-loading-text="数据提交中...">注册</button>
+    			<p class="account-footer">
+      				已有账号？<a href="__URL__/index">立即登录</a>
+    			</p>
+    			<p class="text-center">{$error_message}</p>
+  			</form>
 	    </if>
 		</div>
 		

@@ -378,9 +378,23 @@ class IndexAction extends Action {
 
     public function signup()
     {
-        # code...
-        $_global_arr['signup'] = 1;
-        $this->display('index');
+        if (count($_POST) > 0) {
+            $username = htmlspecialchars($_POST['username']);
+            $email = htmlspecialchars($_POST['email']);
+            $User = M("User");
+            $condition['name'] = $username;
+            $condition["email"] = $email;
+            $condition["_logic"] = "OR";
+            $res = $User->where($condition)->select();
+            if (count($res) > 0) {
+                $this->assign("error_message", "该用户已存在,请登录");
+                $this->display('index');
+            }
+        }else {
+            $_global_arr['signup'] = 1;
+            $this->assign('signup',1);
+            $this->display('index');
+        }
     }
 
 }
