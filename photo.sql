@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-03-24 08:22:00
+Date: 2015-03-26 09:44:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,6 +26,7 @@ CREATE TABLE `tp_photo` (
   `pname` varchar(32) DEFAULT NULL COMMENT '照片名字md5加密',
   `path` varchar(80) DEFAULT NULL COMMENT '照片路径',
   `hash` char(32) NOT NULL,
+  `impression` text COMMENT '图片附带的感想',
   UNIQUE KEY `pid` (`pid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
