@@ -389,6 +389,28 @@ class IndexAction extends Action {
             if (count($res) > 0) {
                 $this->assign("error_message", "该用户已存在,请登录");
                 $this->display('index');
+            }else{
+                $data['name'] = htmlspecialchars($_POST['username']);
+                $data['email'] = htmlspecialchars($_POST['email']);
+                $data['password'] = md5(htmlspecialchars($_POST['password']));
+                $data['token'] = md5($_POST['username'].$_POST['email'].$_POST['password']);
+                $phptime = time();
+                $mysqltime = date("Y-m-d H:i:s", $phptime);
+                $data['time'] = $mysqltime;
+                $data['status'] = '0';
+                $res = $User->add($data);
+                $mail = new SaeMail();
+                $token = $data['token'];
+                $mail_body = "亲爱的".$username.":感谢您在我站注册了新账号。http://www.sae.com/index.php/Index/verify?token=".$token;
+                $ret = $mail->quickSend($data['email'], 'Photo 注册验证', $mail_body, '736886864@qq.com', 'sxs@19901202');
+                if ($ret === false) {
+                    var_dump($mail->errno(), $mail->errmsg());
+                } else {
+                    //echo "邮件发送成功，请更改源码，将邮箱改为自己的测试";
+                    $this->assign('error_message',"注册成功，请登录");
+                    $this->assign('signup',0);
+                    $this->display('index');
+                }
             }
         }else {
             $_global_arr['signup'] = 1;
