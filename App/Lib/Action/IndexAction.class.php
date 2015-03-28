@@ -143,10 +143,10 @@ class IndexAction extends Action {
 
     public function image() {
         echo 'ThinkPHP的验证码功能使用SaeVcode服务；水印、缩略图等功能，使用了SaeImage服务，本示例测试验证码<br />';
-        echo "<img src='" . __URL__ . "/verify'/>";
+        echo "<img src='" . __URL__ . "/verifyimage'/>";
     }
 
-    public function verify() {
+    public function verifyimage() {
         import("@.ORG.Image");
         Image::buildImageVerify();
     }
@@ -419,6 +419,24 @@ class IndexAction extends Action {
         }
     }
 
+    public function verify()
+    {
+        # code...
+        $verify = stripcslashes(trim($_GET['verify']));
+        $User = M("user");
+        $condition['token'] = $verify;
+        $uid_arr = $User->where($condition)->field('uid')->select();
+        $data['status'] = '1';
+        $re = $User->where($condition)->save($data);
+        if ($re) {
+                # code...
+                echo "alert('用户验证成功')";
+                $_SESSION['uid'] = $uid_arr['0']['uid'];
+                $this->redirect('Photo/index','',0,'');
+                $this->display();
+            }    
+    }
 }
+
 
 ?>
