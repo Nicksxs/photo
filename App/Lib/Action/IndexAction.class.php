@@ -422,7 +422,9 @@ class IndexAction extends Action {
     public function verify()
     {
         # code...
-        $verify = stripcslashes(trim($_GET['verify']));
+        //echo "hello----------------------";
+        //exit();
+        $verify = stripcslashes(trim($_GET['token']));
         $User = M("user");
         $condition['token'] = $verify;
         $uid_arr = $User->where($condition)->field('uid')->select();
