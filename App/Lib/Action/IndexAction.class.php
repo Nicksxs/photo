@@ -432,7 +432,7 @@ class IndexAction extends Action {
         $re = $User->where($condition)->save($data);
         if ($re) {
                 # code...
-                echo "alert('用户验证成功')";
+                //echo "alert('用户验证成功')";
                 $_SESSION['uid'] = $uid_arr['0']['uid'];
                 $this->redirect('Photo/index','',0,'');
                 $this->display();
