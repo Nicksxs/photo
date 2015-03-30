@@ -34,16 +34,22 @@
   						<input id="uploadbtn" name="" value="上传" type="submit" />
   					</div>
 				</form>
-				<volist name="photo_array" id="vo">
-					<div class="row">
-						{$vo.name}
-						<p>{$vo.impression}</p>
-						<img src="{$vo.path}{$vo.pname}">
-					</div>
-			    </volist>
 			</div>
 			<div class="col-md-3"></div>
 		</div>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <volist name="photo_array" id="vo">
+                    <div class="row">
+                        {$vo.name}
+                        <p>{$vo.impression}</p>
+                        <img style="width:300px; height: 300px" src="{$vo.path}{$vo.pname}">
+                    </div>
+                </volist>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
 	</div>
 
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
