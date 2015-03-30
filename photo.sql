@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-03-26 09:44:23
+Date: 2015-03-30 18:28:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,11 +28,6 @@ CREATE TABLE `tp_photo` (
   `hash` char(32) NOT NULL,
   `impression` text COMMENT '图片附带的感想',
   UNIQUE KEY `pid` (`pid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_photo
--- ----------------------------
 
 -- ----------------------------
 -- Table structure for tp_relationship
@@ -45,11 +40,6 @@ CREATE TABLE `tp_relationship` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tp_relationship
--- ----------------------------
-INSERT INTO `tp_relationship` VALUES ('1', '2');
-
--- ----------------------------
 -- Table structure for tp_user
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_user`;
@@ -59,12 +49,9 @@ CREATE TABLE `tp_user` (
   `email` varchar(48) NOT NULL,
   `name` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
+  `time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '用户注册时间',
+  `status` enum('1','0') DEFAULT NULL,
+  `token` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `phone` (`phone`,`email`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户基础表';
-
--- ----------------------------
--- Records of tp_user
--- ----------------------------
-INSERT INTO `tp_user` VALUES ('1', '+8618768113974', '736886864@qq.com', 'Nicksxs', 'fb50d587c55e8568f77ea649133dda06');
-INSERT INTO `tp_user` VALUES ('2', '18768113974', 'Nicksxs@163.com', 'Nicksxs01', 'fb50d587c55e8568f77ea649133dda06');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户基础表';
