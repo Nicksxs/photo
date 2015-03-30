@@ -28,6 +28,7 @@ CREATE TABLE `tp_photo` (
   `hash` char(32) NOT NULL,
   `impression` text COMMENT '图片附带的感想',
   UNIQUE KEY `pid` (`pid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_relationship
