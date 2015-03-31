@@ -4,6 +4,45 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<style type="text/css">
+		body {
+			background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
+		}
+		.wrapper{
+			max-width: 1024px;
+			padding: 43px 0 52px;
+			text-align: center;
+			margin: 0 auto;
+			position: relative;
+			width: 992px;
+		}
+		.timelineSider, .timeLineCenter{
+			padding-top: 32px;
+		}
+		.timeLineSider {
+			float: left;
+			width: 224px
+			padding:16px 0;
+		}
+		.timeLineCenter {
+			box-shadow: inset 1px 0 0 rgba(0, 0, 0, .05), inset -1px 0 0 rgba(0, 0, 0, .05);
+			background: #e0e1e2 url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
+			border: 1px solid rgba(0, 0, 0, .1);
+			border-width: 0 1px;
+			min-width: 240px;
+			max-width: 512px;
+			padding:16px 32px;
+			margin-left: 224px;
+		}
+		.timeLineBookmark {
+			font-weight: 700;
+			text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+			line-height: 16px;
+			margin-right: 24px;
+			padding-top: 4px;
+			position: relative;
+		}
+	</style>
 	<title>Photo and My Friends</title>
 </head>
 <body>
@@ -37,19 +76,24 @@
 			</div>
 			<div class="col-md-3"></div>
 		</div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-                <volist name="photo_array" id="vo">
-                    <div class="row">
-                        {$vo.name}
-                        <p>{$vo.impression}</p>
-                        <img style="width:300px; height: 300px" src="{$vo.path}{$vo.pname}">
-                    </div>
-                </volist>
-            </div>
-            <div class="col-md-4"></div>
-        </div>
+		
+	</div>
+	<div class="wrapper">
+	    <div class="timeLineContainer">
+	        <volist name="photo_array" id="vo">
+	        	<div class="timeLineItem">
+	                <div class="timelineSider">
+	                	<div class="timeLineBookmark">
+	                		<span>{$vo.name}</span>
+						</div>
+	                </div>
+	                <div class="timeLineCenter">
+	                    <img style="width:300px; height: 300px" src="{$vo.path}{$vo.pname}">
+	                    <p>{$vo.impression}</p>
+	                </div>
+	            </div>
+	        </volist>
+	    </div>
 	</div>
 
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">

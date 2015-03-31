@@ -1,10 +1,20 @@
 @charset 'utf-8';
+
 body {
   padding-top: 0px;
   padding-bottom: 40px;
 }
+.container{
+    height: 768px;
+}
+.login{
+  width: 400px;
+  background: white;
+  margin: auto;
+  padding-top: 50px;
+}
 .account {
-  max-width: 320px;
+  width: 320px;
   padding: 15px;
   margin: 0 auto;
 }
@@ -39,4 +49,10 @@ body {
   border: 2px solid #2ecc71;
   border-radius: 0;
   color: #fff;
+}
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill:currentColor;
 }
