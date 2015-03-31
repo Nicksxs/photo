@@ -19,7 +19,7 @@
 		.timelineSider, .timeLineCenter{
 			padding-top: 32px;
 		}
-		.timeLineSider {
+		.timelineSider {
 			float: left;
 			width: 224px
 			padding:16px 0;
@@ -33,6 +33,12 @@
 			max-width: 512px;
 			padding:16px 32px;
 			margin-left: 224px;
+		}
+		.timelineCard {
+			background: #fafafa;
+			border: 1px solid silver;
+			border-radius: 3px;
+			box-shadow: 0 1px 16px rgba(0, 0, 0, .1);
 		}
 		.timeLineBookmark {
 			font-weight: 700;
@@ -88,8 +94,10 @@
 						</div>
 	                </div>
 	                <div class="timeLineCenter">
-	                    <img style="width:300px; height: 300px" src="{$vo.path}{$vo.pname}">
-	                    <p>{$vo.impression}</p>
+	                    <div class="timelineCard">
+	                    	<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">
+	                    	<p>{$vo.impression}</p>
+	                    </div>
 	                </div>
 	            </div>
 	        </volist>
