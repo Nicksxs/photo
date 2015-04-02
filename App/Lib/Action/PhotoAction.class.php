@@ -144,4 +144,15 @@ class PhotoAction extends Action
         }
         $this->display('index');
     }
+
+    public function user($uid)
+    {
+        # code...
+        //echo $uid;
+        $photo = M("Photo");
+        $condition['uid'] = $uid;
+        $photo_arr = $photo->where($condition)->field("uid, pname, path, impression")->order('time desc')->limit(5)->select();
+        $this->assign('photo_array',$photo_arr);
+        $this->display();
+    }
 }

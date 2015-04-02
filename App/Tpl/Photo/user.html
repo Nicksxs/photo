@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>test</title>
 	<style type="text/css">
-		body {
+	body {
 			background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
 		}
 		a, a:visited {
@@ -63,41 +62,8 @@
 			position: relative;
 		}
 	</style>
-	<title>Photo and My Friends</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row" style="height: 43px; background-color: rgba(4, 40, 71, 0.8); margin-bottom: 10px">
-			<div class="col-md-4"></div>
-			<div class="col-md-4"></div>
-			<div class="col-md-4">
-				<div class="col-sm-4 col-sm-offset-8">
-					<h3>{$username}</h3>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-				<form class="form-inline" action="__URL__/index" method="post" enctype="multipart/form-data">
-  					<div class="form-group">
-  						<label class="sr-only" for="feeling">想法</label>
-  						<input id="feeling" type="text" name="feelings" />
-  					</div>
-  					<div class="form-group">
-  						<label class="sr-only" for="imageUpload">图片文件</label>
-  						<input id="imageUpload" type="file" name="files[]"/>
-  					</div>
-  					<div class="form-group">
-  						<label class="sr-only" for="uploadbtn">上传</label>
-  						<input id="uploadbtn" name="" value="上传" type="submit" />
-  					</div>
-				</form>
-			</div>
-			<div class="col-md-3"></div>
-		</div>
-		
-	</div>
 	<div class="wrapper">
 	    <div class="timelineContainer">
 	        <volist name="photo_array" id="vo">
@@ -107,7 +73,7 @@
 							<div class="timelineBookmarkFirstRow">
 								<div class="timelineBookmarkInfo">
 									<a class="timelineBookmarkInfoUsername" href="__URL__/user/uid/{$vo.uid}">
-										<span>{$vo.name}</span>
+										<span>{$vo.uid}</span>
 									</a>
 								</div>
 							</div>
@@ -124,10 +90,5 @@
 	        </volist>
 	    </div>
 	</div>
-
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<script src="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
-	<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 </body>
 </html>
