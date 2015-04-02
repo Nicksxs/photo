@@ -80,7 +80,21 @@ class PhotoAction extends Action
 		}
 		foreach ($res_arr as &$value) {
 			$value['name'] = $user_map[$value['uid']];
-			$value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+			//$tmp = substr_count($value['path'], '__PUBLIC__', 0, strlen($value['path']));
+			//echo $value['path'];
+			//echo "<br />";
+			//echo $tmp;
+			//echo "<br />";
+			//$value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+			//echo $value['path'];
+			//echo "<br />";
+            if (IS_SAE) {
+                # code...
+                $value['path'] = '__PUBLIC__/'.$value['path'];
+            }else{
+                $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+            }
+            
 		}
 		//echo "hello<br />";
 		//print_r($res_arr);
