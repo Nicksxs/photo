@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-03-30 18:28:51
+Date: 2015-04-02 08:26:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,7 +28,7 @@ CREATE TABLE `tp_photo` (
   `hash` char(32) NOT NULL,
   `impression` text COMMENT '图片附带的感想',
   UNIQUE KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_relationship
@@ -55,4 +55,4 @@ CREATE TABLE `tp_user` (
   `token` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `phone` (`phone`,`email`,`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户基础表';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='用户基础表';
