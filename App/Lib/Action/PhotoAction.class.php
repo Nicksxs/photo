@@ -78,16 +78,18 @@ class PhotoAction extends Action
 		foreach ($user_arr as $value) {
 			$user_map[$value['uid']] = $value['name'];
 		}
-		$value['name'] = $user_map[$value['uid']];
         if (IS_SAE) {
             foreach ($res_arr as &$value) {
+                $value['name'] = $user_map[$value['uid']];
                 $value['path'] = '__PUBLIC__/'.$value['path'];
             }
-        }else{
+        } else {
             foreach ($res_arr as &$value) {
+                $value['name'] = $user_map[$value['uid']];
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
             }
         }
+        
 		//echo "hello<br />";
 		//print_r($res_arr);
 		//$this->display();
