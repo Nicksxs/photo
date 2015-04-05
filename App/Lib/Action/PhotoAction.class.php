@@ -78,24 +78,16 @@ class PhotoAction extends Action
 		foreach ($user_arr as $value) {
 			$user_map[$value['uid']] = $value['name'];
 		}
-		foreach ($res_arr as &$value) {
-			$value['name'] = $user_map[$value['uid']];
-			//$tmp = substr_count($value['path'], '__PUBLIC__', 0, strlen($value['path']));
-			//echo $value['path'];
-			//echo "<br />";
-			//echo $tmp;
-			//echo "<br />";
-			//$value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
-			//echo $value['path'];
-			//echo "<br />";
-            if (IS_SAE) {
-                # code...
+		$value['name'] = $user_map[$value['uid']];
+        if (IS_SAE) {
+            foreach ($res_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.$value['path'];
-            }else{
+            }
+        }else{
+            foreach ($res_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
             }
-            
-		}
+        }
 		//echo "hello<br />";
 		//print_r($res_arr);
 		//$this->display();
@@ -152,6 +144,16 @@ class PhotoAction extends Action
         $photo = M("Photo");
         $condition['uid'] = $uid;
         $photo_arr = $photo->where($condition)->field("uid, pname, path, impression")->order('time desc')->limit(5)->select();
+        if (IS_SAE) {
+            foreach ($photo_arr as &$value) {
+                $value['path'] = '__PUBLIC__/'.$value['path'];
+            }
+        } else {
+            foreach ($photo_arr as &$value) {
+                $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+            }
+        }
+
         $this->assign('photo_array',$photo_arr);
         $this->display();
     }
