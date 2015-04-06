@@ -13,6 +13,7 @@ class IndexAction extends Action {
     }
 
     public function index() {
+        $m = memcache_init();
         $this->assign('signup',$_global_arr['signup']);
         if (isset($_POST['username'])&&isset($_POST['password'])&&$_POST['username']!=''&&$_POST['password']!='') {
             # code...
@@ -21,6 +22,7 @@ class IndexAction extends Action {
             $condition['password'] = md5($_POST['password']);
             $res = $User->where($condition)->limit(1)->select();
             if (isset($res[0])) {
+                $m->set('uid', $res[0]['uid']);
                 $_SESSION['uid'] = $res[0]['uid'];
                 $this->redirect('Photo/index','',0,'');
                 exit();

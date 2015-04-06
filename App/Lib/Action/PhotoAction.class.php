@@ -52,8 +52,10 @@ class PhotoAction extends Action
             //echo $_SESSION['uid'];
         }
 
-		$uid = $_SESSION['uid'];
-		$User = M("user");
+		// $uid = $_SESSION['uid'];
+        $m = memcache_init();
+        $uid = $m->get('uid');
+        $User = M("user");
 		$condition['uid'] = $uid;
 		$username = $User->where($condition)->field("name")->limit(1)->select();    //找出当前用户
 		$username = $username[0]['name'];
@@ -155,7 +157,11 @@ class PhotoAction extends Action
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
             }
         }
-
+        $uid = $_SESSION['uid'];
+        $condition['uid'] = $uid;
+        $user = M('user');
+        $username = $user->where($condition)->limit(1)->select();
+        $this->assign('username', $username['0']['name']);
         $this->assign('photo_array',$photo_arr);
         $this->display();
     }
