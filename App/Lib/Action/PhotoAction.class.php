@@ -14,7 +14,8 @@ class PhotoAction extends Action
 
 	public function index()
 	{
-		if (!empty($_FILES)) {
+		$m = memcache_init();
+        if (!empty($_FILES)) {
             import("@.ORG.UploadFile");
             $config=array(
                 'allowExts'=>array('jpg','gif','png'),
@@ -36,7 +37,8 @@ class PhotoAction extends Action
             $info = $upload->getUploadFileInfo();
             //var_dump($info[0]);
             $Photo = M("Photo");
-            $data['uid'] = $_SESSION['uid'];
+            $data['uid'] = $m->get('uid');
+            //$data['uid'] = $_SESSION['uid'];
             $phptime = time();
             $mysqltime = date("Y-m-d H:i:s", $phptime);
             //$phptime = strtotime($mysqltime);
@@ -101,6 +103,7 @@ class PhotoAction extends Action
 	}
 
 	public function upload() {
+        $m = memcache_init();
         if (!empty($_FILES)) {
             import("@.ORG.UploadFile");
             $config=array(
@@ -123,7 +126,8 @@ class PhotoAction extends Action
             $info = $upload->getUploadFileInfo();
             //var_dump($info[0]);
             $Photo = M("Photo");
-            $data['uid'] = $_SESSION['uid'];
+            //$data['uid'] = $_SESSION['uid'];
+            $data['uid'] = $m->get('uid');
             $phptime = time();
             $mysqltime = date("Y-m-d H:i:s", $phptime);
             //$phptime = strtotime($mysqltime);
@@ -145,6 +149,7 @@ class PhotoAction extends Action
     {
         # code...
         //echo $uid;
+        $m = memcache_init();
         $photo = M("Photo");
         $condition['uid'] = $uid;
         $photo_arr = $photo->where($condition)->field("uid, pname, path, impression")->order('time desc')->limit(5)->select();
@@ -157,7 +162,8 @@ class PhotoAction extends Action
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
             }
         }
-        $uid = $_SESSION['uid'];
+        //$uid = $_SESSION['uid'];
+        $uid = $m->get('uid');
         $condition['uid'] = $uid;
         $user = M('user');
         $username = $user->where($condition)->limit(1)->select();

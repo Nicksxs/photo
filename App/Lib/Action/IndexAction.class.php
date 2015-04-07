@@ -23,7 +23,7 @@ class IndexAction extends Action {
             $res = $User->where($condition)->limit(1)->select();
             if (isset($res[0])) {
                 $m->set('uid', $res[0]['uid']);
-                $_SESSION['uid'] = $res[0]['uid'];
+                //$_SESSION['uid'] = $res[0]['uid'];
                 $this->redirect('Photo/index','',0,'');
                 exit();
                 //echo "<strong>Hello ".$res[0]['name']."</strong>";
@@ -364,6 +364,7 @@ class IndexAction extends Action {
 
     public function login()
     {
+        $m = memcache_init();
         $User = M('User');
         $condition['name'] = $_POST['username'];
         $condition['password'] = md5($_POST['password']);
@@ -371,7 +372,8 @@ class IndexAction extends Action {
         //$password = md5($_POST['password']);
         $res = $User->where($condition)->limit(1)->select();
         if (isset($res[0])) {
-            $_SESSION['username'] = $_POST['username'];
+            $m->set('username', $_POST['username']);
+            //$_SESSION['username'] = $_POST['username'];
             $this->redirect('Photo/index','',0,'');
             //echo "<strong>Hello ".$res[0]['name']."</strong>";
         }
@@ -426,6 +428,7 @@ class IndexAction extends Action {
         # code...
         //echo "hello----------------------";
         //exit();
+        $m = memcache_init();
         $verify = stripcslashes(trim($_GET['token']));
         $User = M("user");
         $condition['token'] = $verify;
@@ -435,7 +438,8 @@ class IndexAction extends Action {
         if ($re) {
                 # code...
                 //echo "alert('用户验证成功')";
-                $_SESSION['uid'] = $uid_arr['0']['uid'];
+                $m->set('uid', $uid_arr['0']['uid']);
+                //$_SESSION['uid'] = $uid_arr['0']['uid'];
                 $this->redirect('Photo/index','',0,'');
                 $this->display();
             }    

@@ -6,3 +6,8 @@ define('APP_DEBUG',true);
 //define('SAE_RUNTIME',true);
 define('ENGINE_NAME','sae');
 require THINK_PATH.'ThinkPHP.php';
+// phpinfo();
+// $m = memcache_connect('localhost', 11211);
+// $m->add('a', 'test');
+// $ret = $m->get('a');
+// echo $ret;
