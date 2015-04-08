@@ -7,7 +7,7 @@
 	<title>photo</title>
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/CSS/default.css">
 	<style type="text/css">
-	.header {
+	/*.header {
 		height: 60px; 
 		margin-bottom: 20px; 
 		margin-left: -15px;
@@ -18,17 +18,103 @@
 		box-shadow: 0 1px 0 rgba(111,151,182,.5)inset,0 -1px 0 rgba(111,151,182,.2)inset,0 1px 1px rgba(0,0,0,.2);
 		background-image: url("//instagramstatic-a.akamaihd.net/bluebar/f688a03/images/shared/noise-1.png"),-webkit-linear-gradient(top,#517fa4,#306088);
 		z-index: 100;
+	}*/
+	.top-bar-wrapper {
+		position: relative;
+		max-width: 1024px;
+		margin: 0 auto;
+	}
+	.top-bar {
+		position: fixed;
+		width: 100%;
+		height: 43px;
+		border-bottom: 1px solid #1c5380;
+		border-bottom-color: rgba(4, 40, 71, .8);
+		box-shadow: 0 1px 0 rgba(111,151,182,.5)inset,0 -1px 0 rgba(111,151,182,.2)inset,0 1px 1px rgba(0,0,0,.2);
+		background-color: #517fa4;
+		background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5013bad/images/shared/noise-1.png"),-webkit-linear-gradient(top,#517fa4,#306088);
+		background-position: 50% 50%;
+		z-index: 100;
+	}
+	.top-bar-new .top-bar-left {
+		left: -1px;
+		position: absolute;
+		top: 0;
+	}
+	.top-bar-left .top-bar-actions {
+		float: left;
+		display: inline;
+	}
+	.top-bar-actions {
+		margin: 0;
+		padding: 0;
+		border-right: 1px solid #5786aa;
+		border-right-color: rgba(255, 255, 255, .1);
+		border-left: 1px solid #06365f;
+		border-left-color: rgba(0, 0, 0, .1);
+	}
+	ul {
+		list-style-type: square;
+	}
+	ol, ul {
+		list-style-position: outside;
+	}
+	.top-bar-actions>li {
+		position: relative;
+		float: left;
+		display: inline;
+		margin: 0;
+	}
+	.top-bar-actions>li>a{
+		position: relative;
+		display: block;     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	}
+	.top-bar-actions>li>a:active, .top-bar-actions>li>a.link-active, .top-bar-actions>li>a.pressed {
+		border-left: none;
+		background-color: rgba(6, 54, 95, .35);
+		box-shadow: -1px 0 0 rgba(255,255,255,.15),inset 0 0 1px rgba(6,54,95,.4),inset 1px 0 1px rgba(6,54,95,.4);
+	}
+	.top-bar-home i {
+		position: absolute;
+		left: 0;
+		top: 0;
+		margin: 0!important;
+		background: url("//instagramstatic-a.akamaihd.net/bluebar/5013bad/images/shared/shared-assets.png") no-repeat 6px -194px;
+	}
+	.top-bar-home, .top-bar-home i {
+		height: 44px!important;
+		width: 44px!important;
+	}
+	a {
+		color: rgb(51, 122, 183);
+		text-decoration: none;
+		background-color: transparent;
 	}
 	</style>
 </head>
 <body style="background: #78C5F9;">
-	<div class="container-fluid">
-		<strong>Hello World</strong>
-		<a href="__URL__/origin">origin</a>
+	
+		<!-- <strong>Hello World</strong>
+		<a href="__URL__/origin">origin</a> -->
 		<!-- <div class="row" style="margin-top: 0px"> -->
-		<div class="header">
+		<!-- <div class="header"> -->
+		<header class="top-bar top-bar-new">
+			<div class="top-bar-wrapper">
+				<div class="logo">
+					<a href="/">Amber</a>
+				</div>
+				<div class="top-bar-left">
+					<ul class="top-bar-actions">
+						<li>
+							<a class="link-active top-bar-home" title="首页" href="/"><i></i></a>
+						</li>
+					</ul>
+				</div>
+			</div>
 			<p class="text-center" style="font-size: 36px">Show your photo and feelings</p>
-		</div>
+		</header>
+	<div class="container-fluid">		
+		<!-- </div> -->
 		<!-- </div> -->
 		<div class="login">
 		<if condition="$signup eq 0">
