@@ -75,6 +75,79 @@
 		background-image: url("//instagramstatic-a.akamaihd.net/bluebar/f688a03/images/shared/noise-1.png"),-webkit-linear-gradient(top,#517fa4,#306088);
 		z-index: 100;
 		}
+		.timelineLikes {
+  			background: url("//instagramstatic-a.akamaihd.net/bluebar/58d7454/images/bg/white-gradient-100px.png") repeat-x scroll 50% 50% #e6e6e6;
+  			border-bottom: 1px solid #ddd;
+  			box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 0 3px rgba(0, 0, 0, 0.1);
+  			height: 40px;
+  			margin: 1px 0 -1px;
+  			position: relative;
+		}
+		.timelineLikeButton {
+  			-moz-user-select: none;
+  			background: url("//instagramstatic-a.akamaihd.net/bluebar/58d7454/images/feed/feed-assets.png") no-repeat scroll 8px 6px rgba(0, 0, 0, 0);
+  			border-right: 1px solid #ddd;
+  			box-shadow: 1px 0 0 rgba(255, 255, 255, 0.9);
+  			display: inline;
+  			float: left;
+  			height: 100%;
+  			position: relative;
+  			width: 48px;
+		}
+.timelineLikeList {
+  line-height: 16px;
+  margin: 0 52px 0 48px;
+  overflow: hidden;
+  padding: 12px 0 12px 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mediaMoreButtonContainer {
+  float: right;
+  margin-right: 1px;
+}
+.mediaMoreButtonContainer {
+  display: inline;
+  height: 100%;
+  position: relative;
+  width: 48px;
+}
+.timelineComments {
+  padding: 0;
+}
+.timelineCaption.timelineComment {
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  margin-bottom: 0;
+  padding: 12px 12px 11px 48px;
+  word-wrap: break-word;
+}
+.timelineComment {
+  text-overflow: ellipsis;
+  transition: opacity 0.2s ease 0s;
+}
+
+.timelineCommentComposer {
+  margin-bottom: 0;
+  padding: 12px;
+}
+.timelineComment, .timelineCommentMore, .timelineCommentComposer {
+  position: relative;
+}
+.timelineCommentTextField {
+  border-color: #d8d8d8;
+  border-radius: 2px;
+  margin: 0;
+  padding: 8px 9px 7px;
+  width: 100%;
+}
+.fadedTextField {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+button, input, select {
+  vertical-align: baseline;
+}
 	</style>
 	<title>Photo and My Friends</title>
 </head>
@@ -123,8 +196,30 @@
 	                </div>
 	                <div class="timelineCenter">
 	                    <div class="timelineCard">
-	                    	<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">
-	                    	<p>{$vo.impression}</p>
+	                    	<div class="mediaPhoto">
+	                    		<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">
+	                    	</div>
+	                    	<div class="timelineLikes">
+	                    		<div class="timelineLikeButton"></div>
+	                    		<div class="mediaMoreButtonContainer"></div>
+	                    		<div class="timelineLikeList"></div>
+	                    	</div>
+	                    	<div class="timelineComments">
+	                    		<div class="timelineComment timelineCaption">
+	                    			<p>{$vo.impression}</p>
+	                    		</div>
+	                    		<div class="scrollArea scrollAreaOpen scrollAreaInitialized">
+	                    			<div class="scrollAreaContents">
+	                    				<div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364" class="timelineComment"><a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0" href="/martingjergjaj/"><div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0.0" class="timelineCommentAvatar Image" src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg"><div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0.0.0"><div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0.0.0.$=1$iImage_3" style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);" id="iImage_3" class="iImage"></div></div></div></a><a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.1" href="/martingjergjaj/" class="timelineCommentUsername">martingjergjaj</a><span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2" class="timelineCommentText"><span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2.$text0:0:$end:0">Happy ;)</span></span><a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.3" class="delete-comment"></a></div>
+	                    			</div>
+	                    		</div>
+	                    		<div class="timelineCommentComposer">
+	                    			<div class="timelineCommentAvatar Image" style="width: 24px; height: 24px"></div>
+	                    			<div class="timelineCommentText">
+	                    				<form class="timelineCommentForm"><input type="text" class="fadedTextField timelineCommentTextField" placeholder="写评论..."></form>
+	                    			</div>
+	                    		</div> 	
+	                    	</div>
 	                    </div>
 	                </div>
 	            </div>

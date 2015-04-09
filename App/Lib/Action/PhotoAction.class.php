@@ -37,8 +37,8 @@ class PhotoAction extends Action
             $info = $upload->getUploadFileInfo();
             //var_dump($info[0]);
             $Photo = M("Photo");
-            $data['uid'] = $m->get('uid');
-            //$data['uid'] = $_SESSION['uid'];
+            //$data['uid'] = $m->get('uid');
+            $data['uid'] = $_SESSION['uid'];
             $phptime = time();
             $mysqltime = date("Y-m-d H:i:s", $phptime);
             //$phptime = strtotime($mysqltime);
@@ -54,9 +54,9 @@ class PhotoAction extends Action
             //echo $_SESSION['uid'];
         }
 
-		// $uid = $_SESSION['uid'];
-        $m = memcache_init();
-        $uid = $m->get('uid');
+		$uid = $_SESSION['uid'];
+        //$m = memcache_init();
+        //$uid = $m->get('uid');
         $User = M("user");
 		$condition['uid'] = $uid;
 		$username = $User->where($condition)->field("name")->limit(1)->select();    //找出当前用户
@@ -126,8 +126,8 @@ class PhotoAction extends Action
             $info = $upload->getUploadFileInfo();
             //var_dump($info[0]);
             $Photo = M("Photo");
-            //$data['uid'] = $_SESSION['uid'];
-            $data['uid'] = $m->get('uid');
+            $data['uid'] = $_SESSION['uid'];
+            //$data['uid'] = $m->get('uid');
             $phptime = time();
             $mysqltime = date("Y-m-d H:i:s", $phptime);
             //$phptime = strtotime($mysqltime);
@@ -162,8 +162,8 @@ class PhotoAction extends Action
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
             }
         }
-        //$uid = $_SESSION['uid'];
-        $uid = $m->get('uid');
+        $uid = $_SESSION['uid'];
+        //$uid = $m->get('uid');
         $condition['uid'] = $uid;
         $user = M('user');
         $username = $user->where($condition)->limit(1)->select();

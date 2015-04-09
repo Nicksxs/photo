@@ -22,8 +22,8 @@ class IndexAction extends Action {
             $condition['password'] = md5($_POST['password']);
             $res = $User->where($condition)->limit(1)->select();
             if (isset($res[0])) {
-                $m->set('uid', $res[0]['uid']);
-                //$_SESSION['uid'] = $res[0]['uid'];
+                //$m->set('uid', $res[0]['uid']);
+                $_SESSION['uid'] = $res[0]['uid'];
                 $this->redirect('Photo/index','',0,'');
                 exit();
                 //echo "<strong>Hello ".$res[0]['name']."</strong>";
@@ -372,8 +372,8 @@ class IndexAction extends Action {
         //$password = md5($_POST['password']);
         $res = $User->where($condition)->limit(1)->select();
         if (isset($res[0])) {
-            $m->set('username', $_POST['username']);
-            //$_SESSION['username'] = $_POST['username'];
+            //$m->set('username', $_POST['username']);
+            $_SESSION['username'] = $_POST['username'];
             $this->redirect('Photo/index','',0,'');
             //echo "<strong>Hello ".$res[0]['name']."</strong>";
         }
@@ -438,8 +438,8 @@ class IndexAction extends Action {
         if ($re) {
                 # code...
                 //echo "alert('用户验证成功')";
-                $m->set('uid', $uid_arr['0']['uid']);
-                //$_SESSION['uid'] = $uid_arr['0']['uid'];
+                //$m->set('uid', $uid_arr['0']['uid']);
+                $_SESSION['uid'] = $uid_arr['0']['uid'];
                 $this->redirect('Photo/index','',0,'');
                 $this->display();
             }    
