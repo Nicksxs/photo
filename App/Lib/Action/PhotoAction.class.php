@@ -171,4 +171,13 @@ class PhotoAction extends Action
         $this->assign('photo_array',$photo_arr);
         $this->display();
     }
+
+    public function submitComment($cm = '')
+    {
+        echo "Yes";
+        $data['comment'] = $cm;
+        $Comment = M("comment");
+        $Comment->add($data);
+        $this->ajaxReturn("Yes");
+    }
 }

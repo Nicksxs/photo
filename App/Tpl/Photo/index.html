@@ -210,7 +210,20 @@ button, input, select {
 	                    		</div>
 	                    		<div class="scrollArea scrollAreaOpen scrollAreaInitialized">
 	                    			<div class="scrollAreaContents">
-	                    				<div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364" class="timelineComment"><a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0" href="/martingjergjaj/"><div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0.0" class="timelineCommentAvatar Image" src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg"><div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0.0.0"><div data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.0.0.0.$=1$iImage_3" style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);" id="iImage_3" class="iImage"></div></div></div></a><a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.1" href="/martingjergjaj/" class="timelineCommentUsername">martingjergjaj</a><span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2" class="timelineCommentText"><span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2.$text0:0:$end:0">Happy ;)</span></span><a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.3" class="delete-comment"></a></div>
+	                    				<div class="timelineComment">
+	                    					<a href="/martingjergjaj/">
+	                    						<div class="timelineCommentAvatar Image" src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg">
+	                    							<div>
+	                    								<div style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);" id="iImage_3" class="iImage"></div>
+	                    							</div>
+	                    						</div>
+	                    					</a>
+	                    					<a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.1" href="/martingjergjaj/" class="timelineCommentUsername">martingjergjaj</a>
+	                    					<span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2" class="timelineCommentText">
+	                    						<span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2.$text0:0:$end:0">Happy ;)</span>
+	                    					</span>
+	                    					<a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.3" class="delete-comment"></a>
+	                    				</div>
 	                    			</div>
 	                    		</div>
 	                    		<div class="timelineCommentComposer">
@@ -231,5 +244,18 @@ button, input, select {
 	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
 	<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(".timelineCommentForm").on("submit", function() {
+			var comment = $(".fadedTextField").val();
+			$.ajax({
+				type: 'post',
+				url: "__URL__/submitComment",
+				data: {'cm': comment}
+			}).done(function() {
+				$(".timelineComment").append("<div class='timelinecomment'>"+comment+"</div>");
+				})
+			return false;
+		})
+	</script>
 </body>
 </html>
