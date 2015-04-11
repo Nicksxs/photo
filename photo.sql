@@ -10,10 +10,22 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-04-02 08:26:39
+Date: 2015-04-11 20:59:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for tp_comment
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_comment`;
+CREATE TABLE `tp_comment` (
+  `cid` int(11) NOT NULL AUTO_INCREMENT COMMENT '评论id',
+  `uid` int(11) DEFAULT NULL COMMENT '用户id',
+  `pid` int(11) DEFAULT NULL COMMENT '评价的照片id',
+  `comment` varchar(120) DEFAULT NULL,
+  PRIMARY KEY (`cid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_photo
@@ -35,8 +47,8 @@ CREATE TABLE `tp_photo` (
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_relationship`;
 CREATE TABLE `tp_relationship` (
-  `uid` int(11) DEFAULT NULL,
-  `ruid` int(11) unsigned DEFAULT NULL,
+  `uid` int(11) DEFAULT NULL COMMENT '关注者',
+  `ruid` int(11) unsigned DEFAULT NULL COMMENT '被关注者',
   KEY `uid` (`uid`,`ruid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
