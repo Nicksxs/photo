@@ -1,261 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<style type="text/css">
-		body {
-			background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
-		}
-		a, a:visited {
-			color: #3f729b;
-			text-decoration: none;
-		}
-		.timelineBook
-		.timelineBookmarkInfo {
-			padding: 0 52px 0 0;
-		}
-		.timelineBookmarkInfoUsername {
-			overflow: hidden;
-			-webkit-text-overflow:ellipsis;
-			white-space: nowrap;
-			padding-left: 4px;
-		}
-		.wrapper{
-			max-width: 1024px;
-			padding-bottom: 52px;
-			text-align: center;
-			margin: 0 auto;
-			position: relative;
-			width: 992px;
-		}
-		.timelineSider, .timelineCenter{
-			padding-top: 32px;
-		}
-		.timelineSider {
-			float: left;
-			width: 224px
-			padding:16px 0;
-		}
-		.timelineCenter {
-			box-shadow: inset 1px 0 0 rgba(0, 0, 0, .05), inset -1px 0 0 rgba(0, 0, 0, .05);
-			background: #e0e1e2 url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
-			border: 1px solid rgba(0, 0, 0, .1);
-			border-width: 0 1px;
-			min-width: 240px;
-			max-width: 512px;
-			padding:16px 32px;
-			margin-left: 224px;
-			padding-top: 32px;
-		}
-		.timelineCard {
-			background: #fafafa;
-			border: 1px solid silver;
-			border-radius: 3px;
-			box-shadow: 0 1px 16px rgba(0, 0, 0, .1);
-		}
-		.timelineBookmark {
-			font-weight: 700;
-			text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
-			line-height: 16px;
-			margin-right: 24px;
-			padding-top: 4px;
-			position: relative;
-		}
-		.header {
-		height: 60px; 
-		/*margin-bottom: 20px; */
-		margin-left: -15px;
-		margin-right: -15px;
-		border-bottom: 1px solid #1c5380;
-		border-bottom-color: rgba(4, 40, 71, .8);
-		background-color: #517fa4;
-		box-shadow: 0 1px 0 rgba(111,151,182,.5)inset,0 -1px 0 rgba(111,151,182,.2)inset,0 1px 1px rgba(0,0,0,.2);
-		background-image: url("//instagramstatic-a.akamaihd.net/bluebar/f688a03/images/shared/noise-1.png"),-webkit-linear-gradient(top,#517fa4,#306088);
-		z-index: 100;
-		}
-		.timelineLikes {
-  			background: url("//instagramstatic-a.akamaihd.net/bluebar/58d7454/images/bg/white-gradient-100px.png") repeat-x scroll 50% 50% #e6e6e6;
-  			border-bottom: 1px solid #ddd;
-  			box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 0 3px rgba(0, 0, 0, 0.1);
-  			height: 40px;
-  			margin: 1px 0 -1px;
-  			position: relative;
-		}
-		.timelineLikeButton {
-  			-moz-user-select: none;
-  			background: url("//instagramstatic-a.akamaihd.net/bluebar/58d7454/images/feed/feed-assets.png") no-repeat scroll 8px 6px rgba(0, 0, 0, 0);
-  			border-right: 1px solid #ddd;
-  			box-shadow: 1px 0 0 rgba(255, 255, 255, 0.9);
-  			display: inline;
-  			float: left;
-  			height: 100%;
-  			position: relative;
-  			width: 48px;
-		}
-.timelineLikeList {
-  line-height: 16px;
-  margin: 0 52px 0 48px;
-  overflow: hidden;
-  padding: 12px 0 12px 12px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.mediaMoreButtonContainer {
-  float: right;
-  margin-right: 1px;
-}
-.mediaMoreButtonContainer {
-  display: inline;
-  height: 100%;
-  position: relative;
-  width: 48px;
-}
-.timelineComments {
-  padding: 0;
-}
-.timelineCaption.timelineComment {
-  border-bottom: 1px solid #e6e6e6;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  margin-bottom: 0;
-  padding: 12px 12px 11px 48px;
-  word-wrap: break-word;
-}
-.timelineComment {
-  text-overflow: ellipsis;
-  transition: opacity 0.2s ease 0s;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style type="text/css">
+        body {
+            background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
+        }
 
-.timelineCommentComposer {
-  margin-bottom: 0;
-  padding: 12px;
-}
-.timelineComment, .timelineCommentMore, .timelineCommentComposer {
-  position: relative;
-}
-.timelineCommentTextField {
-  border-color: #d8d8d8;
-  border-radius: 2px;
-  margin: 0;
-  padding: 8px 9px 7px;
-  width: 100%;
-}
-.fadedTextField {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(0, 0, 0, 0.08);
-}
-button, input, select {
-  vertical-align: baseline;
-}
-	</style>
-	<title>Photo and My Friends</title>
+        a, a:visited {
+            color: #3f729b;
+            text-decoration: none;
+        }
+
+        .timelineBookmarkInfo {
+            padding: 0 52px 0 0;
+        }
+
+        .timelineBookmarkInfoUsername {
+            overflow: hidden;
+            -webkit-text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 4px;
+        }
+
+        .wrapper {
+            max-width: 1024px;
+            padding-bottom: 52px;
+            text-align: center;
+            margin: 0 auto;
+            position: relative;
+            width: 992px;
+        }
+
+        .timelineSider, .timelineCenter {
+            padding-top: 32px;
+        }
+
+        .timelineSider {
+            float: left;
+            width: 224px padding : 16 px 0;
+        }
+
+        .timelineCenter {
+            box-shadow: inset 1px 0 0 rgba(0, 0, 0, .05), inset -1px 0 0 rgba(0, 0, 0, .05);
+            background: #e0e1e2 url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
+            border: 1px solid rgba(0, 0, 0, .1);
+            border-width: 0 1px;
+            min-width: 240px;
+            max-width: 512px;
+            padding: 16px 32px;
+            margin-left: 224px;
+            padding-top: 32px;
+        }
+
+        .timelineCard {
+            background: #fafafa;
+            border: 1px solid silver;
+            border-radius: 3px;
+            box-shadow: 0 1px 16px rgba(0, 0, 0, .1);
+        }
+
+        .timelineBookmark {
+            font-weight: 700;
+            text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+            line-height: 16px;
+            margin-right: 24px;
+            padding-top: 4px;
+            position: relative;
+        }
+
+        .header {
+            height: 60px;
+            /*margin-bottom: 20px; */
+            margin-left: -15px;
+            margin-right: -15px;
+            border-bottom: 1px solid #1c5380;
+            border-bottom-color: rgba(4, 40, 71, .8);
+            background-color: #517fa4;
+            box-shadow: 0 1px 0 rgba(111, 151, 182, .5) inset, 0 -1px 0 rgba(111, 151, 182, .2) inset, 0 1px 1px rgba(0, 0, 0, .2);
+            background-image: url("//instagramstatic-a.akamaihd.net/bluebar/f688a03/images/shared/noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
+            z-index: 100;
+        }
+
+        .timelineLikes {
+            background: url("//instagramstatic-a.akamaihd.net/bluebar/58d7454/images/bg/white-gradient-100px.png") repeat-x scroll 50% 50% #e6e6e6;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.15) inset, 0 0 3px rgba(0, 0, 0, 0.1);
+            height: 40px;
+            margin: 1px 0 -1px;
+            position: relative;
+        }
+
+        .timelineLikeButton {
+            -moz-user-select: none;
+            background: url("//instagramstatic-a.akamaihd.net/bluebar/58d7454/images/feed/feed-assets.png") no-repeat scroll 8px 6px rgba(0, 0, 0, 0);
+            border-right: 1px solid #ddd;
+            box-shadow: 1px 0 0 rgba(255, 255, 255, 0.9);
+            display: inline;
+            float: left;
+            height: 100%;
+            position: relative;
+            width: 48px;
+        }
+
+        .timelineLikeList {
+            line-height: 16px;
+            margin: 0 52px 0 48px;
+            overflow: hidden;
+            padding: 12px 0 12px 12px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .mediaMoreButtonContainer {
+            float: right;
+            margin-right: 1px;
+        }
+
+        .mediaMoreButtonContainer {
+            display: inline;
+            height: 100%;
+            position: relative;
+            width: 48px;
+        }
+
+        .timelineLikes
+        .mediaMoreButton {
+            border-left: 1px solid #ddd;
+            box-shadow: inset 1px 0 0 rgba(255, 255, 255, .9);
+        }
+
+        .mediaMoreButton {
+            background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/feed/feed-assets.png") no-repeat 7px -94px;
+            display: block;
+            height: 100%;
+        }
+
+        .timelineComments {
+            padding: 0;
+        }
+
+        .timelineCaption.timelineComment {
+            border-bottom: 1px solid #e6e6e6;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+            margin-bottom: 0;
+            padding: 12px 12px 11px 48px;
+            word-wrap: break-word;
+        }
+
+        .timelineComment {
+            text-overflow: ellipsis;
+            transition: opacity 0.2s ease 0s;
+        }
+
+        .timelineCommentComposer {
+            margin-bottom: 0;
+            padding: 12px;
+        }
+
+        .timelineComment, .timelineCommentMore, .timelineCommentComposer {
+            position: relative;
+        }
+
+        .timelineCommentTextField {
+            border-color: #d8d8d8;
+            border-radius: 2px;
+            margin: 0;
+            padding: 8px 9px 7px;
+            width: 100%;
+        }
+
+        .fadedTextField {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        button, input, select {
+            vertical-align: baseline;
+        }
+    </style>
+    <title>Photo and My Friends</title>
 </head>
 <body>
-	<div class="container-fluid">
-		<div class="header">
-					<p>{$username}</p>
-		</div>
-		<div class="row">
-			<div class="col-md-3"></div>
-			<div class="col-md-6">
-				<form class="form-inline" action="__URL__/index" method="post" enctype="multipart/form-data">
-  					<div class="form-group">
-  						<label class="sr-only" for="feeling">想法</label>
-  						<input id="feeling" type="text" name="feelings" />
-  					</div>
-  					<div class="form-group">
-  						<label class="sr-only" for="imageUpload">图片文件</label>
-  						<input id="imageUpload" type="file" name="files[]"/>
-  					</div>
-  					<div class="form-group">
-  						<label class="sr-only" for="uploadbtn">上传</label>
-  						<input id="uploadbtn" name="" value="上传" type="submit" />
-  					</div>
-				</form>
-			</div>
-			<div class="col-md-3"></div>
-		</div>
-		
-	</div>
-	<div class="wrapper">
-	    <div class="timelineContainer">
-	        <volist name="photo_array" id="vo">
-	        	<div class="timelineItem">
-	                <div class="timelineSider">
-	                	<div class="timelineBookmark">
-							<div class="timelineBookmarkFirstRow">
-								<div class="timelineBookmarkInfo">
-									<a class="timelineBookmarkInfoUsername" href="__URL__/user/uid/{$vo.uid}">
-										<span>{$vo.name}</span>
-									</a>
-								</div>
-							</div>
-	                			
-						</div>
-	                </div>
-	                <div class="timelineCenter">
-	                    <div class="timelineCard">
-	                    	<div class="mediaPhoto">
-	                    		<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">
-	                    	</div>
-	                    	<div class="timelineLikes">
-	                    		<div class="timelineLikeButton"></div>
-	                    		<div class="mediaMoreButtonContainer"></div>
-	                    		<div class="timelineLikeList"></div>
-	                    	</div>
-	                    	<div class="timelineComments">
-	                    		<div class="timelineComment timelineCaption">
-	                    			<p>{$vo.impression}</p>
-	                    		</div>
-	                    		<div class="scrollArea scrollAreaOpen scrollAreaInitialized">
-	                    			<div class="scrollAreaContents">
-	                    				<div class="timelineComment">
-	                    					<a href="/martingjergjaj/">
-	                    						<div class="timelineCommentAvatar Image" src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg">
-	                    							<div>
-	                    								<div style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);" id="iImage_3" class="iImage"></div>
-	                    							</div>
-	                    						</div>
-	                    					</a>
-	                    					<a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.1" href="/martingjergjaj/" class="timelineCommentUsername">martingjergjaj</a>
-	                    					<span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2" class="timelineCommentText">
-	                    						<span data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.2.$text0:0:$end:0">Happy ;)</span>
-	                    					</span>
-	                    					<a data-reactid=".0.0.1.0.0.0:$media959258619081198336:0.1.0.2.1.0.1:$959267338091301364.3" class="delete-comment"></a>
-	                    				</div>
-	                    			</div>
-	                    		</div>
-	                    		<div class="timelineCommentComposer">
-	                    			<div class="timelineCommentAvatar Image" style="width: 24px; height: 24px"></div>
-	                    			<div class="timelineCommentText">
-	                    				<form class="timelineCommentForm"><input type="text" class="fadedTextField timelineCommentTextField" placeholder="写评论..."></form>
-	                    			</div>
-	                    		</div> 	
-	                    	</div>
-	                    </div>
-	                </div>
-	            </div>
-	        </volist>
-	    </div>
-	</div>
+<div class="container-fluid">
+    <div class="header">
+        <p>{$username}</p>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form class="form-inline" action="__URL__/index" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label class="sr-only" for="feeling">想法</label>
+                    <input id="feeling" type="text" name="feelings"/>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="imageUpload">图片文件</label>
+                    <input id="imageUpload" type="file" name="files[]"/>
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="uploadbtn">上传</label>
+                    <input id="uploadbtn" name="" value="上传" type="submit"/>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<script src="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
-	<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(".timelineCommentForm").on("submit", function() {
-			var comment = $(".fadedTextField").val();
-			$.ajax({
-				type: 'post',
-				url: "__URL__/submitComment",
-				data: {'cm': comment}
-			}).done(function() {
-				$(".timelineComment").append("<div class='timelinecomment'>"+comment+"</div>");
-				})
-			return false;
-		})
-	</script>
+</div>
+<div class="wrapper">
+    <div class="timelineContainer">
+        <volist name="photo_array" id="vo">
+            <div class="timelineItem" data-user-id="{$vo.pid}">
+                <div class="timelineSider">
+                    <div class="timelineBookmark">
+                        <div class="timelineBookmarkFirstRow">
+                            <div class="timelineBookmarkInfo">
+                                <a class="timelineBookmarkInfoUsername" href="__URL__/user/uid/{$vo.uid}">
+                                    <span>{$vo.name}</span>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="timelineCenter">
+                    <div class="timelineCard">
+                        <div class="mediaPhoto">
+                            <img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">
+                        </div>
+                        <div class="timelineLikes">
+                            <div class="timelineLikeButton"></div>
+                            <div class="mediaMoreButtonContainer">
+                                <a href="javascript:;" class="mediaMoreButton" title="More" role="button"></a>
+                            </div>
+                            <div class="timelineLikeList"></div>
+                        </div>
+                        <div class="timelineComments">
+                            <div class="timelineComment timelineCaption">
+                                <p>{$vo.impression}</p>
+                            </div>
+                            <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
+                                <div class="scrollAreaContents">
+                                    <div class="timelineComment">
+                                        <a href="/">
+                                            <div class="timelineCommentAvatar Image"
+                                                 src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg">
+                                                <div>
+                                                    <div style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);"
+                                                         id="iImage_3" class="iImage"></div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <a href="/" class="timelineCommentUsername">martingjergjaj</a>
+	                    					<span class="timelineCommentText">
+	                    						<span>Happy ;)</span>
+	                    					</span>
+                                        <a class="delete-comment"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timelineCommentComposer">
+                                <div class="timelineCommentAvatar Image" style="width: 24px; height: 24px"></div>
+                                <div class="timelineCommentText">
+                                    <form class="timelineCommentForm"><input type="text"
+                                                                             class="fadedTextField timelineCommentTextField"
+                                                                             placeholder="写评论..."></form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </volist>
+    </div>
+</div>
+
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
+<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(".timelineCommentForm").on("submit", function () {
+        var comment = $(this).children().val();
+        var pid = $(this).parent().parent().parent().parent().parent().parent().data("userId");
+        $.ajax({
+            type: 'post',
+            url: "__URL__/submitComment",
+            data: {'cm': comment, 'pid': pid}
+        }).done(function () {
+            $(".timelineComment").append("<div class='timelinecomment'>" + comment + "</div>");
+        });
+        return false;
+    });
+</script>
 </body>
 </html>

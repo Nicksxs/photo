@@ -74,7 +74,7 @@ class PhotoAction extends Action
 		}
 		$map['uid'] = array('in', $user_photo_arr);
 		$Photo = M("photo");
-		$res_arr = $Photo->where($map)->field("uid, pname, path, impression")->order('time desc')->select();
+		$res_arr = $Photo->where($map)->field("pid, uid, time, pname, path, impression")->order('time desc')->select();
 		// 找出自己以及关注的用户发布的图片信息
 		$i = 0;
 		$user_arr = $User->where($map)->field('uid, name')->select();
@@ -152,7 +152,7 @@ class PhotoAction extends Action
         $m = memcache_init();
         $photo = M("Photo");
         $condition['uid'] = $uid;
-        $photo_arr = $photo->where($condition)->field("uid, pname, path, impression")->order('time desc')->limit(5)->select();
+        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(5)->select();
         if (IS_SAE) {
             foreach ($photo_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.$value['path'];
@@ -172,10 +172,11 @@ class PhotoAction extends Action
         $this->display();
     }
 
-    public function submitComment($cm = '')
+    public function submitComment($cm = '', $pid = '')
     {
         echo "Yes";
         $data['comment'] = $cm;
+        $data['pid'] = $pid;
         $Comment = M("comment");
         $Comment->add($data);
         $this->ajaxReturn("Yes");
