@@ -93,13 +93,52 @@ class PhotoAction extends Action
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
             }
         }
+
+        //将图片id放进一个数组
+        $pid_arr = array();
+        foreach ($res_arr as $value) {
+            $pid_arr[] = $value['pid'];
+        }
+        $map = array();
+        $map['pid'] = array('in', $pid_arr);
+        $cm = M("comment");
+        $cm_arr = $cm->where($map)->field("uid, pid, comment")->order('time desc')->select();
+        $comment_pid_arr = array();
+        $comment_arr = array();
+        $i = 0;
+        $uid_arr = array();
+        foreach ($cm_arr as $value1) {
+            $uid_arr[] = $value1['uid'];
+        }
+        $map = array();
+        $user_arr = array();
+        $map['uid'] = array('in', $uid_arr);
+        $user_arr = $User->where($map)->field("uid, name")->select();
+        $user_map = array();
+        foreach ($user_arr as $value2) {
+            $user_map[$value2['uid']] = $value2['name'];
+        }
+
+
+        foreach ($cm_arr as &$value3) {
+            $value3['name'] = $user_map[$value3['uid']];
+            foreach ($res_arr as &$v) {
+                # code...
+                if ($v['pid'] == $value3['pid']) {
+                    $v['comment'][] = $value3;
+                }
+            }
+            //$res_arr[$value['pid']]['comment'][] = $value;
+        }
+
+
         
 		//echo "hello<br />";
 		//print_r($res_arr);
 		//$this->display();
-		$this->assign('photo_array', $res_arr);
-		$this->assign('username', $username);
-		$this->display();
+		 $this->assign('photo_array', $res_arr);
+		 $this->assign('username', $username);
+		 $this->display();
 	}
 
 	public function upload() {
@@ -174,9 +213,13 @@ class PhotoAction extends Action
 
     public function submitComment($cm = '', $pid = '')
     {
-        echo "Yes";
-        $data['comment'] = $cm;
+        
+        $data['uid'] = $_SESSION['uid'];
         $data['pid'] = $pid;
+        $data['comment'] = $cm;
+        $phptime = time();
+        $mysqltime = date("Y-m-d H:i:s", $phptime);
+        $data['time'] = $mysqltime;
         $Comment = M("comment");
         $Comment->add($data);
         $this->ajaxReturn("Yes");

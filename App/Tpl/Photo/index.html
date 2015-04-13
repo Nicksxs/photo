@@ -244,6 +244,7 @@
                             </div>
                             <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
                                 <div class="scrollAreaContents">
+                                    <volist name="vo['comment']" id="sub">
                                     <div class="timelineComment">
                                         <a href="/">
                                             <div class="timelineCommentAvatar Image"
@@ -254,12 +255,13 @@
                                                 </div>
                                             </div>
                                         </a>
-                                        <a href="/" class="timelineCommentUsername">martingjergjaj</a>
+                                        <a href="/" class="timelineCommentUsername">{$sub.name}</a>
 	                    					<span class="timelineCommentText">
-	                    						<span>Happy ;)</span>
+	                    						<span>{$sub.comment}</span>
 	                    					</span>
                                         <a class="delete-comment"></a>
                                     </div>
+                                    </volist>
                                 </div>
                             </div>
                             <div class="timelineCommentComposer">
