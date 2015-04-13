@@ -62,6 +62,43 @@
             box-shadow: 0 1px 16px rgba(0, 0, 0, .1);
         }
 
+        .timelineCard .mediaPhoto .i-like-big {
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/p/glyph-heart-pop-big.png") no-repeat 50% 50%;
+            z-index: 100;
+            background-size: 40% 40%;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .Image {
+            overflow: hidden;
+            position: relative;
+            display: block;
+        }
+
+        .Image::before {
+            content: '';
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        .iImage {
+            background-size: 100% 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
         .timelineBookmark {
             font-weight: 700;
             text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
@@ -180,6 +217,10 @@
         button, input, select {
             vertical-align: baseline;
         }
+
+        div {
+            display: block;
+        }
     </style>
     <title>Photo and My Friends</title>
 </head>
@@ -229,7 +270,14 @@
                 <div class="timelineCenter">
                     <div class="timelineCard">
                         <div class="mediaPhoto">
-                            <img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">
+                            <span class="i-like-big"></span>
+                            <div src="{$vo.path}{$vo.pname}" class="mpFrame Frame Image">
+                                ::before
+                                <div>
+                                    <div class="iImage" id="iImage" style="background-image: url({$vo.path}{$vo.pname});"></div>
+                                </div>
+                            </div>
+                            <!--<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">-->
                         </div>
                         <div class="timelineLikes">
                             <div class="timelineLikeButton"></div>
@@ -245,22 +293,22 @@
                             <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
                                 <div class="scrollAreaContents">
                                     <volist name="vo['comment']" id="sub">
-                                    <div class="timelineComment">
-                                        <a href="/">
-                                            <div class="timelineCommentAvatar Image"
-                                                 src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg">
-                                                <div>
-                                                    <div style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);"
-                                                         id="iImage_3" class="iImage"></div>
+                                        <div class="timelineComment">
+                                            <a href="/">
+                                                <div class="timelineCommentAvatar Image"
+                                                     src="https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg">
+                                                    <div>
+                                                        <div style="background-image:url(https://instagramimages-a.akamaihd.net/profiles/profile_401030797_75sq_1370005500.jpg);"
+                                                             id="iImage_3" class="iImage"></div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                        <a href="/" class="timelineCommentUsername">{$sub.name}</a>
+                                            </a>
+                                            <a href="/" class="timelineCommentUsername">{$sub.name}</a>
 	                    					<span class="timelineCommentText">
 	                    						<span>{$sub.comment}</span>
 	                    					</span>
-                                        <a class="delete-comment"></a>
-                                    </div>
+                                            <a class="delete-comment"></a>
+                                        </div>
                                     </volist>
                                 </div>
                             </div>
@@ -269,7 +317,8 @@
                                 <div class="timelineCommentText">
                                     <form class="timelineCommentForm"><input type="text"
                                                                              class="fadedTextField timelineCommentTextField"
-                                                                             placeholder="写评论..."></form>
+                                                                             placeholder="写评论...">
+                                    </form>
                                 </div>
                             </div>
                         </div>
