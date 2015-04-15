@@ -10,6 +10,7 @@
 
         body {
             background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
+            margin: 0px;
         }
 
         a, a:visited {
@@ -176,6 +177,91 @@
             right: 0;
             top: 0;
         }
+
+        .mcmPhoto {
+            height: 50%;
+            margin: 0 0 0 -1px;
+            position: absolute;
+            width: 20%;
+        }
+
+        .mcmPhoto1, .mcmPhoto1 a, .mcmPhoto1 .Image, .mcmPhoto1 .mcmPhotoShadow {
+            border-radius: 4px 0 0 0;
+        }
+
+        .mcmPhoto6, .mcmPhoto6 a, .mcmPhoto6 .Image, .mcmPhoto6 .mcmPhotoShadow {
+            border-radius: 0 4px 0 0;
+        }
+
+        .mcmPhoto1 {
+            left: 0;
+            top: 0;
+        }
+
+        .mcmPhoto2 {
+            left: 0;
+            top: 50%;
+        }
+
+        .mcmPhoto3 {
+            height: 100%;
+            left: 20%;
+            top: 0;
+            width: 40%;
+        }
+
+        .mcmPhoto4 {
+            left: 60%;
+            top: 0;
+        }
+
+        .mcmPhoto5 {
+            left: 60%;
+            top: 50%;
+        }
+
+        .mcmPhoto6 {
+            left: 80%;
+            top: 0;
+        }
+
+        .mcmPhoto7 {
+            left: 80%;
+            top: 50%;
+        }
+        .mcmPhotoFrontSide{
+            opacity: 1;
+            z-index: 1;
+        }
+        .mcmPhotoFlipside {
+            opacity: 0;
+            z-index: 0;
+        }
+        .mcmPhotoFrontside, .mcmPhotoFlipside {
+            bottom: 1px;
+            left: 1px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transition: z-index .6s ease-out,opacity .6s ease-out;
+        }
+        .Image {
+            overflow: hidden;
+            position: relative;
+        }
+        .iImage {
+            background-size: 100% 100%;
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .Image::before {
+            content: '';
+            display: block;
+            padding-bottom: 100%;
+        }
     </style>
 </head>
 <body class="MediaBrowser UserProfile">
@@ -212,20 +298,32 @@
                     <div class="MediaComp">
                         <div class="mcWrapper">
                             <div class="mcContainer">
-                                <div class="mcmPhoto1 mcmPhoto">
+                            <volist name="photo_array" id="vo" key="k" offset="0" length="7">
+                                <div class="mcmPhoto{$k+1} mcmPhoto">
+                                    <a class="mcmPhotoFrontside" href="">
+                                        <div class="Image" src="{$vo.path}{$vo.pname}" style="width:100%;height100%">
+                                            ::before
+                                            <div>
+                                                <div class="iImage" id="iImage_{$k*2}"
+                                                style="background-image: url({$vo.path}{$vo.pname})">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <b class="mcmPhotoShadow"></b>
+                                    </a>
+                                    <a class="mcmPhotoFlipside" href="">
+                                        <div class="Image" src="{$vo.path}{$vo.pname}" style="width:100%;height:100%">
+                                            ::before
+                                            <div>
+                                                <div class="iImage" id="iImage_{$k*2+1}" style="background-image: url({$vo.path}{$vo.pname})"> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <b class="mcmPhotoShadow"></b>
+                                    </a>
                                 </div>
-                                <div class="mcmPhoto2 mcmPhoto mcmFlipped">
-                                </div>
-                                <div class="mcmPhoto3 mcmPhoto">
-                                </div>
-                                <div class="mcmPhoto4 mcmPhoto mcmFlipped">
-                                </div>
-                                <div class="mcmPhoto5 mcmPhoto mcmFlipped">
-                                </div>
-                                <div class="mcmPhoto6 mcmPhoto">
-                                </div>
-                                <div class="mcmPhoto7 mcmPhoto mcmFlipped">
-                                </div>
+                            </volist>
                             </div>
                         </div>
                     </div>
