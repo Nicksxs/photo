@@ -219,6 +219,7 @@ pip-log.txt
 ## ThinkPHP
 #############
 /APP/Runtime/Cache
+/APP/Runtime/Temp
 /APP/Conf/config.php
 /Public/upload
 readme.html
