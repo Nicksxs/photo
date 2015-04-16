@@ -191,7 +191,7 @@ class PhotoAction extends Action
         $m = memcache_init();
         $photo = M("Photo");
         $condition['uid'] = $uid;
-        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(5)->select();
+        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(7)->select();
         if (IS_SAE) {
             foreach ($photo_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.$value['path'];
