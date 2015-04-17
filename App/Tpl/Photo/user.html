@@ -378,6 +378,22 @@
         </div>
     </div>
 </div>
-
+<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $("a.FollowButton").on("click", function () {
+        // body...
+        //alert("hahaha");
+        
+        if ($(this).hasClass('followButtonFollow')) {
+            $(this).removeClass('followButtonFollow').addClass('followButtonFollowing');
+            $(this).text("following");
+            $.ajax()
+        }else {
+            $(this).removeClass('followButtonFollowing').addClass('followButtonFollow');
+            $(this).text("follow");
+        }
+        return false;
+    })
+</script>
 </body>
 </html>
