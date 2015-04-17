@@ -188,6 +188,7 @@ class PhotoAction extends Action
     {
         # code...
         //echo $uid;
+        $ruid = $uid; 
         $m = memcache_init();
         $photo = M("Photo");
         $condition['uid'] = $uid;
@@ -206,7 +207,19 @@ class PhotoAction extends Action
         $condition['uid'] = $uid;
         $user = M('user');
         $username = $user->where($condition)->limit(1)->select();
+
+        $re = M("relationship");
+        $condition['ruid'] = $ruid;
+        $condition['uid'] = $uid;
+        $res = $re->where($condition)->select();
+        if (isset($res[0])) {
+            $f = 'y';
+        }else{
+            $f = 'n';
+        }
+        $this->assign('f', $f);
         $this->assign('username', $username['0']['name']);
+        $this->assign('ruid', $ruid);
         $this->assign('photo_array',$photo_arr);
         $this->display();
     }
@@ -223,5 +236,37 @@ class PhotoAction extends Action
         $Comment = M("comment");
         $Comment->add($data);
         $this->ajaxReturn("Yes");
+    }
+
+    public function follow($ruid = '', $f = '')
+    {
+        # code...
+        $re = M("relationship");
+        if ($f == 'y') {
+            # code...
+            // $condition['ruid'] = $ruid;
+            // $condition['uid'] = $_SESSION['uid'];
+            // $res = $re->where($condition)->limit(1)->select();
+            // if ($res) {
+            //     $re->select();
+            //     $this->ajaxReturn("Yes");
+            // }else{
+                // $data['ruid'] = $ruid;
+                // $data['uid'] = $_SESSION['uid'];
+                $data['ruid'] = $ruid;
+                $data['uid'] = $_SESSION['uid'];
+                //dump($condition);
+                $re->add($data);
+                $this->ajaxReturn("Yes");
+            // }
+        }else{
+            $condition['ruid'] = $ruid;
+            $condition['uid'] = $_SESSION['uid'];
+            $res = $re->where($condition)->delete();
+            if ($res) {
+                //$this->ajaxReturn("Yes");      
+            }
+            //$this->ajaxReturn("Yes");
+        }
     }
 }
