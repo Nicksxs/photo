@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <style type="text/css">
+    <!--<style type="text/css">
         body {
             background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/727396f/images/shared/noise-2.png");
         }
@@ -224,14 +224,26 @@
         div {
             display: block;
         }
-    </style>
+    </style>-->
+    <link rel="stylesheet" href="__PUBLIC__/CSS/user.css"/>
     <title>Photo and My Friends</title>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="header">
-        <p>{$username}</p>
+<header class="top-bar top-bar-new">
+    <div class="top-bar-wrapper">
+        <div class="logo">
+            <a href="/">Amber</a>
+        </div>
+        <div class="top-bar-left">
+            <ul class="top-bar-actions">
+                <li>
+                    <a class="link-active top-bar-home" title="首页" href="/"><i></i></a>
+                </li>
+            </ul>
+        </div>
     </div>
+    <!--<p class="text-center" style="font-size: 36px">Show your photo and feelings</p>-->
+</header>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-6">
@@ -252,13 +264,11 @@
         </div>
         <div class="col-md-3"></div>
     </div>
-
-</div>
 <div class="wrapper">
     <div class="timelineContainer">
         <volist name="photo_array" id="vo">
             <div class="timelineItem" data-user-id="{$vo.pid}">
-                <div class="timelineSider">
+                <div class="timelineSidebar">
                     <div class="timelineBookmark">
                         <div class="timelineBookmarkFirstRow">
                             <div class="timelineBookmarkInfo">
