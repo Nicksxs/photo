@@ -192,14 +192,17 @@ class PhotoAction extends Action
         $m = memcache_init();
         $photo = M("Photo");
         $condition['uid'] = $uid;
-        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(7)->select();
+        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->select();
+        $count = 0;
         if (IS_SAE) {
             foreach ($photo_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.$value['path'];
+                $count++;
             }
         } else {
             foreach ($photo_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+                $count++;
             }
         }
         $uid = $_SESSION['uid'];
@@ -217,8 +220,19 @@ class PhotoAction extends Action
         }else{
             $f = 'n';
         }
+        $fdcount = 0;    //关注我的人数
+        $condition = array();
+        $condition['ruid'] = $ruid;
+        $fdcount = $re->where($condition)->count();
+        $fgcount = 0;   // 我关注的人数
+        $condition = array();
+        $condition['uid'] = $ruid;
+        $fgcount = $re->where($condition)->count();
         $this->assign('f', $f);
+        $this->assign('followers', $fdcount);
+        $this->assign('following', $fgcount);
         $this->assign('username', $username['0']['name']);
+        $this->assign('posts', $count);
         $this->assign('ruid', $ruid);
         $this->assign('photo_array',$photo_arr);
         $this->display();
