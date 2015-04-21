@@ -225,44 +225,81 @@
             display: block;
         }
     </style>-->
+    <style>
+        .addfileA{
+            cursor: hand;
+            text-decoration: none;
+            width: 100px;
+            height: 40px;
+            background: url("__PUBLIC__/img/button1.png") no-repeat 0 0px;
+            display: block;
+            border-radius: 4px;
+        }
+        .addfileI {
+            cursor: hand;
+            position: relative;
+            left: 0px;
+            width: 100px;
+            height: 40px;
+            background-color: blue;
+            opacity: 0;
+            filter:alpha(opacity=0);
+            border-radius: 4px;
+        }
+    </style>
     <link rel="stylesheet" href="__PUBLIC__/CSS/user.css"/>
-    <title>Photo and My Friends</title>
+    <title>Memory</title>
 </head>
 <body>
-<header class="top-bar top-bar-new">
-    <div class="top-bar-wrapper">
-        <div class="logo">
-            <a href="/">Amber</a>
-        </div>
-        <div class="top-bar-left">
-            <ul class="top-bar-actions">
-                <li>
-                    <a class="link-active top-bar-home" title="首页" href="/"><i></i></a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <!--<p class="text-center" style="font-size: 36px">Show your photo and feelings</p>-->
-</header>
+    <header class="top-bar top-bar-new">
+            <div class="top-bar-wrapper">
+                <div class="logo">
+                    <a href="/">Amber</a>
+                </div>
+                <div class="top-bar-left">
+                    <ul class="top-bar-actions">
+                        <li>
+                            <a class="link-active top-bar-home" title="首页" href="/"><i></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="top-bar-right account-state" id="top_var_right">
+                    <ul class="top-bar-actions">
+                        <li class="link-profile">
+                            <a href="javacript:;" id="_dropdownContext0">
+                                    <span class="img img-outset current-user-avatar" style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg);">
+                                        <img src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg" alt=""/>
+                                        <b></b>
+                                    </span>
+                                    <strong>{$username}</strong>
+                            </a>
+                            <span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </header>
     <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
             <form class="form-inline" action="__URL__/index" method="post" enctype="multipart/form-data">
-                <div class="form-group">
+                <div class="form-group col-sm-8">
                     <label class="sr-only" for="feeling">想法</label>
-                    <input id="feeling" type="text" name="feelings"/>
+                    <input id="feeling" type="text" name="feelings"/ style="width:280px;">
                 </div>
-                <div class="form-group">
-                    <label class="sr-only" for="imageUpload">图片文件</label>
-                    <input id="imageUpload" type="file" name="files[]"/>
+                <div class="form-group col-sm-4">
+                    <!-- <label class="sr-only" for="imageUpload">图片文件</label> -->
+                    <a href="#" class="addfileA">
+                        <input class="addfileI" id="imageUpload" type="file" name="files[]"/>
+                    </a>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label class="sr-only" for="uploadbtn">上传</label>
                     <input id="uploadbtn" name="" value="上传" type="submit"/>
-                </div>
+                </div> -->
             </form>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
     </div>
 <div class="wrapper">
     <div class="timelineContainer">
@@ -332,10 +369,10 @@
     </div>
 </div>
 
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script src="http://cdn.bootcss.com/bootstrap/3.3.2/css/bootstrap.min.css"></script>
+<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+<link rel="stylesheet" href="__PUBLIC__/css/bootstrap-theme.min.css">
 <script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(".timelineCommentForm").on("submit", function () {
         var comment = $(this).children().val();
