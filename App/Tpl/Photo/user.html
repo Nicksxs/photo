@@ -401,6 +401,42 @@
                         </ul>
                     </div>
                 </div>
+                <div class="mbMedia">
+                    <div class="PhotoGrid">
+                        <volist name="photo_thumb_array" id="vo">
+                        <div>
+                            <volist name="vo" id="item">
+                            <div class="PhotoGridMediaItem" role="img" style="width: 20%;">
+                                <div class="pgmiWrapper">
+                                    <div class="pgmiHeader">
+                                        <h3 class="pgmiMonthHeader"></h3>
+                                        <time class="pgmiDateHeader"></time>
+                                    </div>
+                                    <a href="" class="pgmiImageLink">
+                                        <div src="{$item.path}{$item.thumb_pname}" class="pgmiThumb tThumbImage Image">
+                                            <div>
+                                                <div class="iImage" style="background-image: url({$item.path}{$item.thumb_pname})">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <div class="pgmiFooter">
+                                        <ul class="pgmiStats">
+                                            <li class="pgmiStatsLikes">
+                                                <span></span>
+                                            </li>
+                                            <li class="pgmiStatsComments">
+                                                <span></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            </volist>
+                        </div>
+                        </volist>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -432,7 +468,15 @@
             }); 
         }
         return false;
-    })
+    });
+    $("a.pgmiImageLink").hover(
+            function() {
+                $(this).addClass("pgmiImageLinkFocussed");
+            },
+            function() {
+                $(this).removeClass("pgmiImageLinkFocussed");
+            }
+    );
 </script>
 </body>
 </html>

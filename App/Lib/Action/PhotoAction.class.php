@@ -192,17 +192,36 @@ class PhotoAction extends Action
         $m = memcache_init();
         $photo = M("Photo");
         $condition['uid'] = $uid;
-        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->select();
+        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(0, 10)->select();
         $count = 0;
+        $photo_thumb_arr = array();
+        $i =  0;
+        $j =  0;
         if (IS_SAE) {
             foreach ($photo_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.$value['path'];
+                $value['thumb_pname'] = 'thumb_'.$value['pname'];
                 $count++;
+                if($j == 5){
+                    $j = 0;
+                    $i++;
+                    $photo_thumb_arr[$i][$j++] = $value;
+                }else{
+                    $photo_thumb_arr[$i][$j++] = $value;
+                }
             }
         } else {
             foreach ($photo_arr as &$value) {
                 $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
+                $value['thumb_pname'] = 'thumb_'.$value['pname'];
                 $count++;
+                if($j == 5){
+                    $j = 0;
+                    $i++;
+                    $photo_thumb_arr[$i][$j++] = $value;
+                }else{
+                    $photo_thumb_arr[$i][$j++] = $value;
+                }
             }
         }
         $uid = $_SESSION['uid'];
@@ -235,6 +254,7 @@ class PhotoAction extends Action
         $this->assign('posts', $count);
         $this->assign('ruid', $ruid);
         $this->assign('photo_array',$photo_arr);
+        $this->assign('photo_thumb_array', $photo_thumb_arr);
         $this->display();
     }
 
