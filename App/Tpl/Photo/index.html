@@ -340,7 +340,18 @@
                         </div>
                         <div class="timelineComments">
                             <div class="timelineComment timelineCaption">
-                                <p>{$vo.impression}</p>
+                                <a href="__URL__/{$vo.name}/">
+                                    <div src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg" class="timelineCommentAvatar Image">
+                                        <div>
+                                            <div class="iImage" id="iImage" style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="timelineCommentUsername" href="__URL__/{$vo.name}/">{$vo.name}</a>
+                                <span class="timelineCommentText">
+                                    <span>{$vo.impression}</span>
+                                </span>
                             </div>
                             <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
                                 <div class="scrollAreaContents">
