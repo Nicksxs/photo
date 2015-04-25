@@ -58,7 +58,7 @@ body {
   fill:currentColor;
 }
 .log{
-    background: url("../img/test2.png") no-repeat 0 6px;
+    background: url("../img/logo.png") no-repeat 0 4px;
 }
 .VerticalCenter {
     display: table;
