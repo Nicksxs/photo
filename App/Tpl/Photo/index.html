@@ -229,8 +229,8 @@
         .addfileA {
             cursor: hand;
             text-decoration: none;
-            width: 100px;
-            height: 40px;
+            width: 120px;
+            height: 38px;
             background-color: rgba(103, 159, 203, 0.72);
             display: block;
             border: 1px solid rgba(160, 200, 232, 0.26);
@@ -243,8 +243,8 @@
             cursor: hand;
             position: relative;
             left: 0px;
-            width: 100px;
-            height: 40px;
+            width: 120px;
+            height: 38px;
             background-color: blue;
             opacity: 0;
             filter: alpha(opacity=0);
@@ -290,33 +290,33 @@
                         </div>
                     </div>
                 </header>
-                <!--<div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <form class="form-inline" action="__URL__/index" method="post"
-                              enctype="multipart/form-data">
-                            <div class="form-group col-sm-8">
-                                <label class="sr-only" for="feeling">想法</label>
-                                <input id="feeling" type="text" name="feelings"/ style="width:280px; margin-top:
-                                5px; margin-bottom:5px;">
-                            </div>
-                            <div class="form-group col-sm-4">
-                                &lt;!&ndash; <label class="sr-only" for="imageUpload">图片文件</label> &ndash;&gt;
-                                <a href="#" class="addfileA">
-                                    <input class="addfileI" id="imageUpload" type="file" name="files[]"/>
-                                </a>
-                            </div>
-                            &lt;!&ndash; <div class="form-group">
-                                <label class="sr-only" for="uploadbtn">上传</label>
-                                <input id="uploadbtn" name="" value="上传" type="submit"/>
-                            </div> &ndash;&gt;
-                        </form>
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>-->
                 <div class="main">
                     <div class="wrapper">
                     <div class="timelineContainer">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <form class="form-inline" action="__URL__/index" method="post"
+                                      enctype="multipart/form-data">
+                                    <div class="form-group col-sm-8">
+                                        <label class="sr-only" for="feeling">想法</label>
+                                        <input id="feeling" type="text" name="feelings"/ style="width:380px; margin-top:
+                                        5px; margin-bottom:5px; margin-left:40px;">
+                                    </div>
+                                    <div class="form-group col-sm-4">
+                                        <!-- <label class="sr-only" for="imageUpload">图片文件</label> -->
+                                        <a href="#" class="addfileA">
+                                            <input class="addfileI" id="imageUpload" type="file" name="files[]"/>
+                                        </a>
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label class="sr-only" for="uploadbtn">上传</label>
+                                        <input id="uploadbtn" name="" value="上传" type="submit"/>
+                                    </div> -->
+                                </form>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
                         <volist name="photo_array" id="vo">
                             <div class="timelineItem" data-user-id="{$vo.pid}">
                                 <div class="timelineSidebar">
