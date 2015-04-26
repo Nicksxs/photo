@@ -226,7 +226,7 @@
         }
     </style>-->
     <style>
-        .addfileA{
+        .addfileA {
             cursor: hand;
             text-decoration: none;
             width: 100px;
@@ -238,6 +238,7 @@
             margin-bottom: 5px;
             margin-top: 5px;
         }
+
         .addfileI {
             cursor: hand;
             position: relative;
@@ -246,7 +247,7 @@
             height: 40px;
             background-color: blue;
             opacity: 0;
-            filter:alpha(opacity=0);
+            filter: alpha(opacity=0);
             border-radius: 4px;
         }
     </style>
@@ -255,135 +256,155 @@
     <link rel="icon" href="__PUBLIC__/img/favicon.ico" type="image/x-icon">
     <title>Memory</title>
 </head>
-<body>
-    <header class="top-bar top-bar-new">
-            <div class="top-bar-wrapper">
-                <div class="logo">
-                    <a href="/">Amber</a>
-                </div>
-                <div class="top-bar-left">
-                    <ul class="top-bar-actions">
-                        <li>
-                            <a class="link-active top-bar-home" title="首页" href="/"><i></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="top-bar-right account-state" id="top_var_right">
-                    <ul class="top-bar-actions">
-                        <li class="link-profile">
-                            <a href="javacript:;" id="_dropdownContext0">
-                                    <span class="img img-outset current-user-avatar" style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg);">
-                                        <img src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg" alt=""/>
+<body class="timelineFeedPage">
+<span id="react-root">
+        <div class="root">
+            <div class="page">
+                <header class="top-bar top-bar-new">
+                    <div class="top-bar-wrapper">
+                        <div class="logo">
+                            <a href="/">Amber</a>
+                        </div>
+                        <div class="top-bar-left">
+                            <ul class="top-bar-actions">
+                                <li>
+                                    <a class="link-active top-bar-home" title="首页" href="/"><i></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="top-bar-right account-state" id="top_var_right">
+                            <ul class="top-bar-actions">
+                                <li class="link-profile">
+                                    <a href="javacript:;" id="_dropdownContext0">
+                                    <span class="img img-outset current-user-avatar"
+                                          style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg);">
+                                        <img src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg"
+                                             alt=""/>
                                         <b></b>
                                     </span>
-                                    <strong>{$username}</strong>
-                            </a>
-                            <span></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-    <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-            <form class="form-inline" action="__URL__/index" method="post" enctype="multipart/form-data">
-                <div class="form-group col-sm-8">
-                    <label class="sr-only" for="feeling">想法</label>
-                    <input id="feeling" type="text" name="feelings"/ style="width:280px; margin-top: 5px; margin-bottom:5px;">
-                </div>
-                <div class="form-group col-sm-4">
-                    <!-- <label class="sr-only" for="imageUpload">图片文件</label> -->
-                    <a href="#" class="addfileA">
-                        <input class="addfileI" id="imageUpload" type="file" name="files[]"/>
-                    </a>
-                </div>
-                <!-- <div class="form-group">
-                    <label class="sr-only" for="uploadbtn">上传</label>
-                    <input id="uploadbtn" name="" value="上传" type="submit"/>
-                </div> -->
-            </form>
-        </div>
-        <div class="col-md-4"></div>
-    </div>
-<div class="wrapper">
-    <div class="timelineContainer">
-        <volist name="photo_array" id="vo">
-            <div class="timelineItem" data-user-id="{$vo.pid}">
-                <div class="timelineSidebar">
-                    <div class="timelineBookmark">
-                        <div class="timelineBookmarkFirstRow">
-                            <div class="timelineBookmarkInfo">
-                                <a class="timelineBookmarkInfoUsername" href="__URL__/user/uid/{$vo.uid}">
-                                    <span>{$vo.name}</span>
+                                        <strong>{$username}</strong>
+                                    </a>
+                                    <span></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </header>
+                <!--<div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <form class="form-inline" action="__URL__/index" method="post"
+                              enctype="multipart/form-data">
+                            <div class="form-group col-sm-8">
+                                <label class="sr-only" for="feeling">想法</label>
+                                <input id="feeling" type="text" name="feelings"/ style="width:280px; margin-top:
+                                5px; margin-bottom:5px;">
+                            </div>
+                            <div class="form-group col-sm-4">
+                                &lt;!&ndash; <label class="sr-only" for="imageUpload">图片文件</label> &ndash;&gt;
+                                <a href="#" class="addfileA">
+                                    <input class="addfileI" id="imageUpload" type="file" name="files[]"/>
                                 </a>
                             </div>
-                        </div>
-
+                            &lt;!&ndash; <div class="form-group">
+                                <label class="sr-only" for="uploadbtn">上传</label>
+                                <input id="uploadbtn" name="" value="上传" type="submit"/>
+                            </div> &ndash;&gt;
+                        </form>
                     </div>
-                </div>
-                <div class="timelineCenter">
-                    <div class="timelineCard">
-                        <div class="mediaPhoto">
-                            <span class="i-like-big"></span>
-                            <div src="{$vo.path}{$vo.pname}" class="mpFrame Frame Image">
-                                <div>
-                                    <div class="iImage" id="iImage" style="background-image: url({$vo.path}{$vo.pname});"></div>
-                                </div>
-                            </div>
-                            <!--<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">-->
-                        </div>
-                        <div class="timelineLikes">
-                            <div class="timelineLikeButton"></div>
-                            <div class="mediaMoreButtonContainer">
-                                <a href="javascript:;" class="mediaMoreButton" title="More" role="button"></a>
-                            </div>
-                            <div class="timelineLikeList"></div>
-                        </div>
-                        <div class="timelineComments">
-                            <div class="timelineComment timelineCaption">
-                                <a href="__URL__/{$vo.name}/">
-                                    <div src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg" class="timelineCommentAvatar Image">
-                                        <div>
-                                            <div class="iImage" id="iImage" style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg)">
+                    <div class="col-md-4"></div>
+                </div>-->
+                <div class="main">
+                    <div class="wrapper">
+                    <div class="timelineContainer">
+                        <volist name="photo_array" id="vo">
+                            <div class="timelineItem" data-user-id="{$vo.pid}">
+                                <div class="timelineSidebar">
+                                    <div class="timelineBookmark">
+                                        <div class="timelineBookmarkFirstRow">
+                                            <div class="timelineBookmarkInfo">
+                                                <a class="timelineBookmarkInfoUsername"
+                                                   href="__URL__/user/uid/{$vo.uid}">
+                                                    <span>{$vo.name}</span>
+                                                </a>
                                             </div>
                                         </div>
+
                                     </div>
-                                </a>
-                                <a class="timelineCommentUsername" href="__URL__/{$vo.name}/">{$vo.name}</a>
+                                </div>
+                                <div class="timelineCenter">
+                                    <div class="timelineCard">
+                                        <div class="mediaPhoto">
+                                            <span class="i-like-big"></span>
+
+                                            <div src="{$vo.path}{$vo.pname}" class="mpFrame Frame Image">
+                                                <div>
+                                                    <div class="iImage" id="iImage"
+                                                         style="background-image: url({$vo.path}{$vo.pname});"></div>
+                                                </div>
+                                            </div>
+                                            <!--<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">-->
+                                        </div>
+                                        <div class="timelineLikes">
+                                            <div class="timelineLikeButton"></div>
+                                            <div class="mediaMoreButtonContainer">
+                                                <a href="javascript:;" class="mediaMoreButton" title="More"
+                                                   role="button"></a>
+                                            </div>
+                                            <div class="timelineLikeList"></div>
+                                        </div>
+                                        <div class="timelineComments">
+                                            <div class="timelineComment timelineCaption">
+                                                <a href="__URL__/{$vo.name}/">
+                                                    <div src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg"
+                                                         class="timelineCommentAvatar Image">
+                                                        <div>
+                                                            <div class="iImage" id="iImage"
+                                                                 style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg)">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <a class="timelineCommentUsername"
+                                                   href="__URL__/{$vo.name}/">{$vo.name}</a>
                                 <span class="timelineCommentText">
                                     <span>{$vo.impression}</span>
                                 </span>
-                            </div>
-                            <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
-                                <div class="scrollAreaContents">
-                                    <volist name="vo['comment']" id="sub">
-                                        <div class="timelineComment">
-                                            <a href="/" class="timelineCommentUsername">{$sub.name}</a>
+                                            </div>
+                                            <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
+                                                <div class="scrollAreaContents">
+                                                    <volist name="vo['comment']" id="sub">
+                                                        <div class="timelineComment">
+                                                            <a href="/" class="timelineCommentUsername">{$sub.name}</a>
 	                    					<span class="timelineCommentText">
 	                    						<span>{$sub.comment}</span>
 	                    					</span>
-                                            <a class="delete-comment"></a>
+                                                            <a class="delete-comment"></a>
+                                                        </div>
+                                                    </volist>
+                                                </div>
+                                            </div>
+                                            <div class="timelineCommentComposer">
+                                                <div class="timelineCommentAvatar Image"
+                                                     style="width: 24px; height: 24px"></div>
+                                                <div class="timelineCommentText">
+                                                    <form class="timelineCommentForm"><input type="text"
+                                                                                             class="fadedTextField timelineCommentTextField"
+                                                                                             placeholder="写评论...">
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </volist>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="timelineCommentComposer">
-                                <div class="timelineCommentAvatar Image" style="width: 24px; height: 24px"></div>
-                                <div class="timelineCommentText">
-                                    <form class="timelineCommentForm"><input type="text"
-                                                                             class="fadedTextField timelineCommentTextField"
-                                                                             placeholder="写评论...">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+                        </volist>
+                    </div>
                     </div>
                 </div>
             </div>
-        </volist>
-    </div>
-</div>
+        </div>
+    </span>
 
 <link rel="stylesheet" href="__PUBLIC__/CSS/bootstrap.min.css">
 <link rel="stylesheet" href="__PUBLIC__/CSS/bootstrap-theme.min.css">
