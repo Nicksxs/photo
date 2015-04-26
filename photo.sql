@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-04-11 20:59:29
+Date: 2015-04-26 21:24:11
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,6 +24,7 @@ CREATE TABLE `tp_comment` (
   `uid` int(11) DEFAULT NULL COMMENT '用户id',
   `pid` int(11) DEFAULT NULL COMMENT '评价的照片id',
   `comment` varchar(120) DEFAULT NULL,
+  `time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '评论生成时间',
   PRIMARY KEY (`cid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
