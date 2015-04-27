@@ -423,7 +423,8 @@
     $(".timelineCommentForm").on("submit", function () {
         var that = this;
         var comment = $(this).children().val();
-        var pid = $(this).parent().parent().parent().parent().parent().parent().data("userId");
+        //var pid = $(this).parent().parent().parent().parent().parent().parent().data("userId");
+        var pid = $(this).parents(".timelineItem").data("userId");
         $.ajax({
             type: 'post',
             url: "__URL__/submitComment",
