@@ -229,9 +229,9 @@
         .addfileA {
             cursor: hand;
             text-decoration: none;
-            width: 120px;
+            width: 116px;
             height: 38px;
-            background-color: rgba(103, 159, 203, 0.72);
+            background-color: #579BD3;
             display: block;
             border: 1px solid rgba(160, 200, 232, 0.26);
             border-radius: 4px;
@@ -243,9 +243,9 @@
             cursor: hand;
             position: relative;
             left: 0px;
-            width: 120px;
+            width: 116px;
             height: 38px;
-            background-color: blue;
+            background-color: #1c5380;
             opacity: 0;
             filter: alpha(opacity=0);
             border-radius: 4px;
@@ -375,7 +375,12 @@
                                                 <div class="scrollAreaContents">
                                                     <volist name="vo['comment']" id="sub">
                                                         <div class="timelineComment">
-                                                            <a href="/" class="timelineCommentUsername">{$sub.name}</a>
+                                                            <a href="/{$sub.name}/">
+                                                                <div class="timelineCommentAvatar Image" src="https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg">
+                                                                    <div class="iImage" id="iImage" style="background-image: url(https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg)"></div>
+                                                                </div>
+                                                            </a>
+                                                            <a href="/{sub.username}/" class="timelineCommentUsername">{$sub.name}</a>
 	                    					<span class="timelineCommentText">
 	                    						<span>{$sub.comment}</span>
 	                    					</span>
