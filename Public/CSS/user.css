@@ -109,12 +109,12 @@
     box-shadow: 0 -1px 0 #06365f inset, 0 1px 0 rgba(255, 255, 255, .2) inset;
     border-radius: 4px 4px 0 0;
     background-color: #517fa4;
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -moz-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -o-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -ms-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -moz-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -o-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -ms-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), linear-gradient(top, #517fa4, #306088);
     background-position: 50% 50%;
     margin: -1px -1px 1px
 }
@@ -1531,7 +1531,7 @@ html.touch .Dropdown li a:hover, .Dropdown li a:active {
     height: 10px;
     width: 13px;
     z-index: 10;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat -1px -800px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat -1px -800px
 }
 
 .dInverted .Dropdown {
@@ -3000,12 +3000,12 @@ body.thirdparty .root {
     border-bottom-color: rgba(4, 40, 71, .8);
     box-shadow: 0 1px 0 rgba(111, 151, 182, .5) inset, 0 -1px 0 rgba(111, 151, 182, .2) inset, 0 1px 1px rgba(0, 0, 0, .2);
     background-color: #517fa4;
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -moz-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -o-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -ms-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -moz-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -o-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -ms-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), linear-gradient(top, #517fa4, #306088);
     background-position: 50% 50%;
     z-index: 100
 }
@@ -3018,7 +3018,7 @@ body.thirdparty .root {
 .top-bar .logo {
     height: 35px;
     width: 97px;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets.png") no-repeat 0 4px;
+    background: url("http://nicksxs01.qiniudn.com/memory_shared-assets.png") no-repeat 0 4px;
     position: absolute;
     top: 4px;
     margin: 0;
@@ -3041,18 +3041,18 @@ body.thirdparty .root {
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .top-bar {
         background-color: #517fa4;
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -webkit-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -moz-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -o-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -ms-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -webkit-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -moz-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -o-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -ms-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), linear-gradient(top, #517fa4, #306088);
         background-position: 50% 50%;
         background-size: "30px 20px, auto"
     }
 
     .top-bar .logo {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_shared-assets@2x.png");
         background-size: 150px 600px
     }
 }
@@ -3112,7 +3112,7 @@ body.thirdparty .root {
     top: 0;
     display: block;
     margin: 0 !important;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets.png") no-repeat 6px -194px
+    background: url("http://nicksxs01.qiniudn.com/memory_shared-assets.png") no-repeat 6px -194px
 }
 
 .top-bar-home:hover {
@@ -3128,7 +3128,7 @@ body.thirdparty .root {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .top-bar-home i {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_shared-assets@2x.png");
         background-size: 150px 600px
     }
 }
@@ -3255,18 +3255,18 @@ body.thirdparty .root {
 }
 
 .top-bar-actions .link-signin i {
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat 2px 3px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat 2px 3px
 }
 
 .top-bar-actions .link-settings i {
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat 3px -196px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat 3px -196px
 }
 
 .top-bar-actions .link-open-instagram i {
     width: 26px;
     height: 28px;
     margin-left: 1px !important;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat 0 -399px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat 0 -399px
 }
 
 .top-bar-actions .link-open-instagram strong {
@@ -3307,7 +3307,7 @@ body.thirdparty .root {
     right: 13px;
     height: 10px;
     width: 13px;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/dropdown-arrow.png") no-repeat 0 0
+    background: url("http://nicksxs01.qiniudn.com/memory_dropdown-arrow.png") no-repeat 0 0
 }
 
 .account-state .dropdown ul {
@@ -3395,7 +3395,7 @@ html.touch .dropdown li a:hover, .dropdown li a:active {
     height: 10px;
     width: 13px;
     z-index: 10;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat -1px -800px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat -1px -800px
 }
 
 .dropdown i.right {
@@ -3574,7 +3574,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
     }
 
     .account-state .link-signin i, .account-state .link-settings i, .account-state .link-open-instagram i {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_glyph-assets@2x.png");
         background-size: 150px 1700px
     }
 
@@ -6141,12 +6141,12 @@ body.thirdparty .root {
     border-bottom-color: rgba(4, 40, 71, .8);
     box-shadow: 0 1px 0 rgba(111, 151, 182, .5) inset, 0 -1px 0 rgba(111, 151, 182, .2) inset, 0 1px 1px rgba(0, 0, 0, .2);
     background-color: #517fa4;
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -moz-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -o-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), -ms-linear-gradient(top, #517fa4, #306088);
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-1.png"), linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -webkit-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -moz-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -o-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), -ms-linear-gradient(top, #517fa4, #306088);
+    background-image: url("http://nicksxs01.qiniudn.com/memory_noise-1.png"), linear-gradient(top, #517fa4, #306088);
     background-position: 50% 50%;
     z-index: 100
 }
@@ -6159,7 +6159,7 @@ body.thirdparty .root {
 .top-bar .logo {
     height: 35px;
     width: 97px;
-    /*background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets.png") no-repeat 0 4px;*/
+    /*background: url("http://nicksxs01.qiniudn.com/memory_shared-assets.png") no-repeat 0 4px;*/
     background: url("../img/logo.png") no-repeat 0 4px;
     position: absolute;
     top: 4px;
@@ -6183,18 +6183,18 @@ body.thirdparty .root {
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .top-bar {
         background-color: #517fa4;
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -webkit-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -moz-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -o-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), -ms-linear-gradient(top, #517fa4, #306088);
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png"), linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -webkit-gradient(linear, left top, left bottom, from(#517fa4), to(#306088));
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -webkit-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -moz-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -o-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), -ms-linear-gradient(top, #517fa4, #306088);
+        background-image: url("http://nicksxs01.qiniudn.com/memory_noise-2.png"), linear-gradient(top, #517fa4, #306088);
         background-position: 50% 50%;
         background-size: "30px 20px, auto"
     }
 
     .top-bar .logo {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_shared-assets@2x.png");
         background-size: 150px 600px
     }
 }
@@ -6254,7 +6254,7 @@ body.thirdparty .root {
     top: 0;
     display: block;
     margin: 0 !important;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets.png") no-repeat 6px -194px
+    background: url("http://nicksxs01.qiniudn.com/memory_shared-assets.png") no-repeat 6px -194px
 }
 
 .top-bar-home:hover {
@@ -6270,7 +6270,7 @@ body.thirdparty .root {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .top-bar-home i {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/shared-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_shared-assets@2x.png");
         background-size: 150px 600px
     }
 }
@@ -6397,18 +6397,18 @@ body.thirdparty .root {
 }
 
 .top-bar-actions .link-signin i {
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat 2px 3px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat 2px 3px
 }
 
 .top-bar-actions .link-settings i {
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat 3px -196px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat 3px -196px
 }
 
 .top-bar-actions .link-open-instagram i {
     width: 26px;
     height: 28px;
     margin-left: 1px !important;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat 0 -399px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat 0 -399px
 }
 
 .top-bar-actions .link-open-instagram strong {
@@ -6449,7 +6449,7 @@ body.thirdparty .root {
     right: 13px;
     height: 10px;
     width: 13px;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/dropdown-arrow.png") no-repeat 0 0
+    background: url("http://nicksxs01.qiniudn.com/memory_dropdown-arrow.png") no-repeat 0 0
 }
 
 .account-state .dropdown ul {
@@ -6537,7 +6537,7 @@ html.touch .dropdown li a:hover, .dropdown li a:active {
     height: 10px;
     width: 13px;
     z-index: 10;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png") no-repeat -1px -800px
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png") no-repeat -1px -800px
 }
 
 .dropdown i.right {
@@ -6716,7 +6716,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
     }
 
     .account-state .link-signin i, .account-state .link-settings i, .account-state .link-open-instagram i {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_glyph-assets@2x.png");
         background-size: 150px 1700px
     }
 
@@ -6854,7 +6854,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
 }
 
 .timelineCenter {
-    background: #e0e1e2 url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png");
+    background: #e0e1e2 url("http://nicksxs01.qiniudn.com/memory_noise-2.png");
     border: 1px solid rgba(0, 0, 0, .1);
     border-width: 0 1px;
     min-width: 240px;
@@ -7515,11 +7515,11 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
     color: #999;
     font-weight: 700;
     text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
-    background: #e0e1e2 url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png")
+    background: #e0e1e2 url("http://nicksxs01.qiniudn.com/memory_noise-2.png")
 }
 
 .timelineFeedPage {
-    background: #edeeef url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png")
+    background: #edeeef url("http://nicksxs01.qiniudn.com/memory_noise-2.png")
 }
 
 .timelineFeedPage .top-bar {
@@ -9691,7 +9691,7 @@ html .ButtonActive.followButtonFollowing, .followButtonPhoto .ButtonActive.follo
 
 
 .MediaBrowser {
-    background: #d8d8d8 url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/noise-2.png")
+    background: #d8d8d8 url("http://nicksxs01.qiniudn.com/memory_noise-2.png")
 }
 
 .MediaBrowser .top-bar {
@@ -9960,7 +9960,7 @@ html .ButtonActive.followButtonFollowing, .followButtonPhoto .ButtonActive.follo
 
 .VerifiedBadge {
     content: '';
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png");
+    background-image: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png");
     display: inline-block;
     overflow: hidden;
     text-indent: 100%;
@@ -9982,7 +9982,7 @@ html .ButtonActive.followButtonFollowing, .followButtonPhoto .ButtonActive.follo
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .VerifiedBadge {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_glyph-assets@2x.png");
         background-size: 150px 1700px
     }
 }
@@ -10573,7 +10573,7 @@ html .ButtonActive.followButtonFollowing, .followButtonPhoto .ButtonActive.follo
     -o-transition: opacity .2s ease-out;
     transition: opacity .2s ease-out;
     background-color: transparent;
-    background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets.png");
+    background-image: url("http://nicksxs01.qiniudn.com/memory_glyph-assets.png");
     background-position: -79px -495px;
     background-repeat: no-repeat;
     border: 0;
@@ -10589,7 +10589,7 @@ html .ButtonActive.followButtonFollowing, .followButtonPhoto .ButtonActive.follo
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
     .upuiMenuTrigger {
-        background-image: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/shared/glyph-assets@2x.png");
+        background-image: url("http://nicksxs01.qiniudn.com/memory_glyph-assets@2x.png");
         background-size: 150px 1700px
     }
 }
