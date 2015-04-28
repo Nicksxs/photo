@@ -347,12 +347,24 @@
                                                 <!--<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">-->
                                             </div>
                                             <div class="timelineLikes">
-                                                <div class="timelineLikeButton"></div>
+                                                <a class="timelineLikeButton" href="javacript:;" title="Toggle like">
+                                                    <span class="i-like-pop timelineLikeButtonAnimation"></span>
+                                                </a>
                                                 <div class="mediaMoreButtonContainer">
                                                     <a href="javascript:;" class="mediaMoreButton" title="More"
                                                        role="button"></a>
                                                 </div>
-                                                <div class="timelineLikeList"></div>
+                                                <div class="timelineLikeList">
+                                                    <span class="LikeList">
+                                                        <span></span>
+                                                        <a class="llNameLink" href=""></a>
+                                                        <a class="llNameLink" href=""></a>
+                                                        <a class="llNameLink" href=""></a>
+                                                        <span> and </span>
+                                                        <span class="llRemainingCount"></span>
+                                                        <span> others like this.</span>
+                                                    </span>
+                                                </div>
                                             </div>
                                             <div class="timelineComments">
                                                 <div class="timelineComment timelineCaption">
@@ -436,6 +448,18 @@
         });
         return false;
     });
+    $(".mediaMoreButton").on("click", function(){
+        var that = this;
+        var pid = $(this).parents(".timelineItem").data("userId");
+        $.ajax({
+            type: 'post',
+            url: "__URL__/submitLike",
+            data: {'pid': pid}
+        }).done(function (){
+            username = $("strong").text();
+            $(that).parents(".timelineLikes").children("a.timelineLikeButton").addClass("timelineLiked");
+        })
+    })
 </script>
 </body>
 </html>
