@@ -1,75 +1,72 @@
-<?php 
+<?php
 
 /**
-* show the fhoto
-*/
-class PhotoAction extends Action
-{
-	
-	public function _initialize()
-	{
+ * show the fhoto
+ */
+class PhotoAction extends Action {
+
+	public function _initialize() {
 		# code...
 		header("Content-Type:text/html; charset=utf-8");
 	}
 
-	public function index()
-	{
+	public function index() {
 		$m = memcache_init();
-        if (!empty($_FILES)) {
-            import("@.ORG.UploadFile");
-            $config=array(
-                'allowExts'=>array('jpg','gif','png'),
-                'savePath'=>'./Public/upload/',
-                'saveRule'=>'time',
-            );
-            $upload = new UploadFile($config);
-            $upload->imageClassPath="@.ORG.Image";
-            $upload->thumb=true;
-            $upload->thumbMaxHeight=100;
-            $upload->thumbMaxWidth=100;
-            if (!$upload->upload()) {
-                $this->error($upload->getErrorMsg());
-            } else {
-                $info = $upload->getUploadFileInfo();
-                $this->assign('filename', $info[0]['savename']);
-            }
-            //print_r($upload);
-            $info = $upload->getUploadFileInfo();
-            //var_dump($info[0]);
-            $Photo = M("Photo");
-            //$data['uid'] = $m->get('uid');
-            $data['uid'] = $_SESSION['uid'];
-            $phptime = time();
-            $mysqltime = date("Y-m-d H:i:s", $phptime);
-            //$phptime = strtotime($mysqltime);
-            $data['time'] = $mysqltime;
-            $data['pname'] = $info[0]['savename'];
-            $data['path'] = $info[0]['savepath'];
-            $data['hash'] = $info[0]['hash'];
-            $data['impression'] = $_POST['feelings'];
-            //print_r($data);
-            $res = $Photo->add($data);       //将图片信息存进数据库
-            //print_r($res);
-            //echo "<br>";
-            //echo $_SESSION['uid'];
-        }
+		if (!empty($_FILES)) {
+			import("@.ORG.UploadFile");
+			$config = array(
+				'allowExts' => array('jpg', 'gif', 'png'),
+				'savePath' => './Public/upload/',
+				'saveRule' => 'time',
+			);
+			$upload = new UploadFile($config);
+			$upload->imageClassPath = "@.ORG.Image";
+			$upload->thumb = true;
+			$upload->thumbMaxHeight = 100;
+			$upload->thumbMaxWidth = 100;
+			if (!$upload->upload()) {
+				$this->error($upload->getErrorMsg());
+			} else {
+				$info = $upload->getUploadFileInfo();
+				$this->assign('filename', $info[0]['savename']);
+			}
+			//print_r($upload);
+			$info = $upload->getUploadFileInfo();
+			//var_dump($info[0]);
+			$Photo = M("Photo");
+			//$data['uid'] = $m->get('uid');
+			$data['uid'] = $_SESSION['uid'];
+			$phptime = time();
+			$mysqltime = date("Y-m-d H:i:s", $phptime);
+			//$phptime = strtotime($mysqltime);
+			$data['time'] = $mysqltime;
+			$data['pname'] = $info[0]['savename'];
+			$data['path'] = $info[0]['savepath'];
+			$data['hash'] = $info[0]['hash'];
+			$data['impression'] = $_POST['feelings'];
+			//print_r($data);
+			$res = $Photo->add($data); //将图片信息存进数据库
+			//print_r($res);
+			//echo "<br>";
+			//echo $_SESSION['uid'];
+		}
 
 		$uid = $_SESSION['uid'];
-        //$m = memcache_init();
-        //$uid = $m->get('uid');
-        $User = M("user");
+		//$m = memcache_init();
+		//$uid = $m->get('uid');
+		$User = M("user");
 		$condition['uid'] = $uid;
-		$username = $User->where($condition)->field("name")->limit(1)->select();    //找出当前用户
+		$username = $User->where($condition)->field("name")->limit(1)->select(); //找出当前用户
 		$username = $username[0]['name'];
 		$user_photo_arr = array();
 		//echo $uid;
-		$user_photo_arr[] = $uid;     //把自己也放入用户数组
+		$user_photo_arr[] = $uid; //把自己也放入用户数组
 		//echo "<br />";
 		$condition['uid'] = $uid;
 		$rela = M("relationship");
 		$ruid_arr = $rela->where($condition)->select();
 		$following_num = count($ruid_arr);
-		for ($i=0; $i < $following_num; $i++) { 
+		for ($i = 0; $i < $following_num; $i++) {
 			$user_photo_arr[] = $ruid_arr[$i]['ruid'];
 		}
 		$map['uid'] = array('in', $user_photo_arr);
@@ -82,225 +79,227 @@ class PhotoAction extends Action
 		foreach ($user_arr as $value) {
 			$user_map[$value['uid']] = $value['name'];
 		}
-        if (IS_SAE) {
-            foreach ($res_arr as &$value) {
-                $value['name'] = $user_map[$value['uid']];
-                $value['path'] = '__PUBLIC__/'.$value['path'];
-            }
-        } else {
-            foreach ($res_arr as &$value) {
-                $value['name'] = $user_map[$value['uid']];
-                $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
-            }
-        }
+		if (IS_SAE) {
+			foreach ($res_arr as &$value) {
+				$value['name'] = $user_map[$value['uid']];
+				$value['path'] = '__PUBLIC__/' . $value['path'];
+			}
+		} else {
+			foreach ($res_arr as &$value) {
+				$value['name'] = $user_map[$value['uid']];
+				$value['path'] = '__PUBLIC__/' . substr($value['path'], 9);
+			}
+		}
 
-        //将图片id放进一个数组
-        $pid_arr = array();
-        foreach ($res_arr as $value) {
-            $pid_arr[] = $value['pid'];
-        }
-        $map = array();
-        $map['pid'] = array('in', $pid_arr);
-        $cm = M("comment");
-        $cm_arr = $cm->where($map)->field("uid, pid, comment")->order('time desc')->select();
-        $comment_pid_arr = array();
-        $comment_arr = array();
-        $i = 0;
-        $uid_arr = array();
-        foreach ($cm_arr as $value1) {
-            $uid_arr[] = $value1['uid'];
-        }
-        $map = array();
-        $user_arr = array();
-        $map['uid'] = array('in', $uid_arr);
-        $user_arr = $User->where($map)->field("uid, name")->select();
-        $user_map = array();
-        foreach ($user_arr as $value2) {
-            $user_map[$value2['uid']] = $value2['name'];
-        }
+		//将图片id放进一个数组
+		$pid_arr = array();
+		foreach ($res_arr as $value) {
+			$pid_arr[] = $value['pid'];
+		}
+		$map = array();
+		$map['pid'] = array('in', $pid_arr);
+		$cm = M("comment");
+		$cm_arr = $cm->where($map)->field("uid, pid, comment")->order('time desc')->select();
+		$comment_pid_arr = array();
+		$comment_arr = array();
+		$i = 0;
+		$uid_arr = array();
+		foreach ($cm_arr as $value1) {
+			$uid_arr[] = $value1['uid'];
+		}
+		$map = array();
+		$user_arr = array();
+		$map['uid'] = array('in', $uid_arr);
+		$user_arr = $User->where($map)->field("uid, name")->select();
+		$user_map = array();
+		foreach ($user_arr as $value2) {
+			$user_map[$value2['uid']] = $value2['name'];
+		}
 
+		foreach ($cm_arr as &$value3) {
+			$value3['name'] = $user_map[$value3['uid']];
+			foreach ($res_arr as &$v) {
+				# code...
+				if ($v['pid'] == $value3['pid']) {
+					$v['comment'][] = $value3;
+				}
+			}
+			//$res_arr[$value['pid']]['comment'][] = $value;
+		}
 
-        foreach ($cm_arr as &$value3) {
-            $value3['name'] = $user_map[$value3['uid']];
-            foreach ($res_arr as &$v) {
-                # code...
-                if ($v['pid'] == $value3['pid']) {
-                    $v['comment'][] = $value3;
-                }
-            }
-            //$res_arr[$value['pid']]['comment'][] = $value;
-        }
-
-
-        
 		//echo "hello<br />";
 		//print_r($res_arr);
 		//$this->display();
-		 $this->assign('photo_array', $res_arr);
-		 $this->assign('username', $username);
-		 $this->display();
+		$this->assign('photo_array', $res_arr);
+		$this->assign('username', $username);
+		$this->display();
 	}
 
 	public function upload() {
-        $m = memcache_init();
-        if (!empty($_FILES)) {
-            import("@.ORG.UploadFile");
-            $config=array(
-                'allowExts'=>array('jpg','gif','png'),
-                'savePath'=>'./Public/upload/',
-                'saveRule'=>'time',
-            );
-            $upload = new UploadFile($config);
-            $upload->imageClassPath="@.ORG.Image";
-            $upload->thumb=true;
-            $upload->thumbMaxHeight=100;
-            $upload->thumbMaxWidth=100;
-            if (!$upload->upload()) {
-                $this->error($upload->getErrorMsg());
-            } else {
-                $info = $upload->getUploadFileInfo();
-                $this->assign('filename', $info[0]['savename']);
-            }
-            //print_r($upload);
-            $info = $upload->getUploadFileInfo();
-            //var_dump($info[0]);
-            $Photo = M("Photo");
-            $data['uid'] = $_SESSION['uid'];
-            //$data['uid'] = $m->get('uid');
-            $phptime = time();
-            $mysqltime = date("Y-m-d H:i:s", $phptime);
-            //$phptime = strtotime($mysqltime);
-            $data['time'] = $mysqltime;
-            $data['pname'] = $info[0]['savename'];
-            $data['path'] = $info[0]['savepath'];
-            $data['hash'] = $info[0]['hash'];
-            $data['impression'] = $_POST['feelings'];
-            //print_r($data);
-            $res = $Photo->add($data);
-            //print_r($res);
-            //echo "<br>";
-            //echo $_SESSION['uid'];
-        }
-        $this->display('index');
-    }
+		$m = memcache_init();
+		if (!empty($_FILES)) {
+			import("@.ORG.UploadFile");
+			$config = array(
+				'allowExts' => array('jpg', 'gif', 'png'),
+				'savePath' => './Public/upload/',
+				'saveRule' => 'time',
+			);
+			$upload = new UploadFile($config);
+			$upload->imageClassPath = "@.ORG.Image";
+			$upload->thumb = true;
+			$upload->thumbMaxHeight = 100;
+			$upload->thumbMaxWidth = 100;
+			if (!$upload->upload()) {
+				$this->error($upload->getErrorMsg());
+			} else {
+				$info = $upload->getUploadFileInfo();
+				$this->assign('filename', $info[0]['savename']);
+			}
+			//print_r($upload);
+			$info = $upload->getUploadFileInfo();
+			//var_dump($info[0]);
+			$Photo = M("Photo");
+			$data['uid'] = $_SESSION['uid'];
+			//$data['uid'] = $m->get('uid');
+			$phptime = time();
+			$mysqltime = date("Y-m-d H:i:s", $phptime);
+			//$phptime = strtotime($mysqltime);
+			$data['time'] = $mysqltime;
+			$data['pname'] = $info[0]['savename'];
+			$data['path'] = $info[0]['savepath'];
+			$data['hash'] = $info[0]['hash'];
+			$data['impression'] = $_POST['feelings'];
+			//print_r($data);
+			$res = $Photo->add($data);
+			//print_r($res);
+			//echo "<br>";
+			//echo $_SESSION['uid'];
+		}
+		$this->display('index');
+	}
 
-    public function user($uid)
-    {
-        # code...
-        //echo $uid;
-        $ruid = $uid; 
-        $m = memcache_init();
-        $photo = M("Photo");
-        $condition['uid'] = $uid;
-        $photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(0, 10)->select();
-        $count = 0;
-        $photo_thumb_arr = array();
-        $i =  0;
-        $j =  0;
-        if (IS_SAE) {
-            foreach ($photo_arr as &$value) {
-                $value['path'] = '__PUBLIC__/'.$value['path'];
-                $value['thumb_pname'] = 'thumb_'.$value['pname'];
-                $count++;
-                if($j == 5){
-                    $j = 0;
-                    $i++;
-                    $photo_thumb_arr[$i][$j++] = $value;
-                }else{
-                    $photo_thumb_arr[$i][$j++] = $value;
-                }
-            }
-        } else {
-            foreach ($photo_arr as &$value) {
-                $value['path'] = '__PUBLIC__/'.substr($value['path'], 9);
-                $value['thumb_pname'] = 'thumb_'.$value['pname'];
-                $count++;
-                if($j == 5){
-                    $j = 0;
-                    $i++;
-                    $photo_thumb_arr[$i][$j++] = $value;
-                }else{
-                    $photo_thumb_arr[$i][$j++] = $value;
-                }
-            }
-        }
-        $uid = $_SESSION['uid'];
-        //$uid = $m->get('uid');
-        $condition['uid'] = $uid;
-        $user = M('user');
-        $username = $user->where($condition)->limit(1)->select();
+	public function user($uid) {
+		# code...
+		//echo $uid;
+		$ruid = $uid;
+		$m = memcache_init();
+		$photo = M("Photo");
+		$condition['uid'] = $uid;
+		$photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(0, 10)->select();
+		$count = 0;
+		$photo_thumb_arr = array();
+		$i = 0;
+		$j = 0;
+		if (IS_SAE) {
+			foreach ($photo_arr as &$value) {
+				$value['path'] = '__PUBLIC__/' . $value['path'];
+				$value['thumb_pname'] = 'thumb_' . $value['pname'];
+				$count++;
+				if ($j == 5) {
+					$j = 0;
+					$i++;
+					$photo_thumb_arr[$i][$j++] = $value;
+				} else {
+					$photo_thumb_arr[$i][$j++] = $value;
+				}
+			}
+		} else {
+			foreach ($photo_arr as &$value) {
+				$value['path'] = '__PUBLIC__/' . substr($value['path'], 9);
+				$value['thumb_pname'] = 'thumb_' . $value['pname'];
+				$count++;
+				if ($j == 5) {
+					$j = 0;
+					$i++;
+					$photo_thumb_arr[$i][$j++] = $value;
+				} else {
+					$photo_thumb_arr[$i][$j++] = $value;
+				}
+			}
+		}
+		$uid = $_SESSION['uid'];
+		//$uid = $m->get('uid');
+		$condition['uid'] = $uid;
+		$user = M('user');
+		$username = $user->where($condition)->limit(1)->select();
 
-        $re = M("relationship");
-        $condition['ruid'] = $ruid;
-        $condition['uid'] = $uid;
-        $res = $re->where($condition)->select();
-        if (isset($res[0])) {
-            $f = 'y';
-        }else{
-            $f = 'n';
-        }
-        $fdcount = 0;    //关注我的人数
-        $condition = array();
-        $condition['ruid'] = $ruid;
-        $fdcount = $re->where($condition)->count();
-        $fgcount = 0;   // 我关注的人数
-        $condition = array();
-        $condition['uid'] = $ruid;
-        $fgcount = $re->where($condition)->count();
-        $this->assign('f', $f);
-        $this->assign('followers', $fdcount);
-        $this->assign('following', $fgcount);
-        $this->assign('username', $username['0']['name']);
-        $this->assign('posts', $count);
-        $this->assign('ruid', $ruid);
-        $this->assign('photo_array',$photo_arr);
-        $this->assign('photo_thumb_array', $photo_thumb_arr);
-        $this->display();
-    }
+		$re = M("relationship");
+		$condition['ruid'] = $ruid;
+		$condition['uid'] = $uid;
+		$res = $re->where($condition)->select();
+		if (isset($res[0])) {
+			$f = 'y';
+		} else {
+			$f = 'n';
+		}
+		$fdcount = 0; //关注我的人数
+		$condition = array();
+		$condition['ruid'] = $ruid;
+		$fdcount = $re->where($condition)->count();
+		$fgcount = 0; // 我关注的人数
+		$condition = array();
+		$condition['uid'] = $ruid;
+		$fgcount = $re->where($condition)->count();
+		$this->assign('f', $f);
+		$this->assign('followers', $fdcount);
+		$this->assign('following', $fgcount);
+		$this->assign('username', $username['0']['name']);
+		$this->assign('posts', $count);
+		$this->assign('ruid', $ruid);
+		$this->assign('photo_array', $photo_arr);
+		$this->assign('photo_thumb_array', $photo_thumb_arr);
+		$this->display();
+	}
 
-    public function submitComment($cm = '', $pid = '')
-    {
-        
-        $data['uid'] = $_SESSION['uid'];
-        $data['pid'] = $pid;
-        $data['comment'] = $cm;
-        $phptime = time();
-        $mysqltime = date("Y-m-d H:i:s", $phptime);
-        $data['time'] = $mysqltime;
-        $Comment = M("comment");
-        $Comment->add($data);
-        $this->ajaxReturn("Yes");
-    }
+	public function submitComment($cm = '', $pid = '') {
 
-    public function follow($ruid = '', $f = '')
-    {
-        # code...
-        $re = M("relationship");
-        if ($f == 'y') {
-            # code...
-            // $condition['ruid'] = $ruid;
-            // $condition['uid'] = $_SESSION['uid'];
-            // $res = $re->where($condition)->limit(1)->select();
-            // if ($res) {
-            //     $re->select();
-            //     $this->ajaxReturn("Yes");
-            // }else{
-                // $data['ruid'] = $ruid;
-                // $data['uid'] = $_SESSION['uid'];
-                $data['ruid'] = $ruid;
-                $data['uid'] = $_SESSION['uid'];
-                //dump($condition);
-                $re->add($data);
-                $this->ajaxReturn("Yes");
-            // }
-        }else{
-            $condition['ruid'] = $ruid;
-            $condition['uid'] = $_SESSION['uid'];
-            $res = $re->where($condition)->delete();
-            if ($res) {
-                //$this->ajaxReturn("Yes");      
-            }
-            //$this->ajaxReturn("Yes");
-        }
-    }
+		$Photo = M("photo");
+		$condition['pid'] = $pid;
+		$result = $Photo->where($condition)->field('comments')->limit(1)->select();
+		$count = $result[0]['comments'];
+		$data['comments'] = $count + 1;
+		$Photo->where($condition)->save($data);
+
+		$data = array();
+		$data['pid'] = $pid;
+		$data['uid'] = $_SESSION['uid'];
+		$data['comment'] = $cm;
+		$phptime = time();
+		$mysqltime = date("Y-m-d H:i:s", $phptime);
+		$data['time'] = $mysqltime;
+		$Comment = M("comment");
+		$Comment->add($data);
+		$this->ajaxReturn("Yes");
+	}
+
+	public function follow($ruid = '', $f = '') {
+		# code...
+		$re = M("relationship");
+		if ($f == 'y') {
+			# code...
+			// $condition['ruid'] = $ruid;
+			// $condition['uid'] = $_SESSION['uid'];
+			// $res = $re->where($condition)->limit(1)->select();
+			// if ($res) {
+			//     $re->select();
+			//     $this->ajaxReturn("Yes");
+			// }else{
+			// $data['ruid'] = $ruid;
+			// $data['uid'] = $_SESSION['uid'];
+			$data['ruid'] = $ruid;
+			$data['uid'] = $_SESSION['uid'];
+			//dump($condition);
+			$re->add($data);
+			$this->ajaxReturn("Yes");
+			// }
+		} else {
+			$condition['ruid'] = $ruid;
+			$condition['uid'] = $_SESSION['uid'];
+			$res = $re->where($condition)->delete();
+			if ($res) {
+				//$this->ajaxReturn("Yes");
+			}
+			//$this->ajaxReturn("Yes");
+		}
+	}
 }
