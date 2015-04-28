@@ -357,11 +357,14 @@
                                                 <div class="timelineLikeList">
                                                     <span class="LikeList">
                                                         <span></span>
-                                                        <a class="llNameLink" href=""></a>
-                                                        <a class="llNameLink" href=""></a>
-                                                        <a class="llNameLink" href=""></a>
+                                                        <volist name="vo['like']" id="sub0" key="k" offset="0" length="3">
+                                                            <a class="llNameLink" href="/{$sub0.name}/">{$sub0.name}</a>
+                                                            <if condition="($k lt 2)">
+                                                                <span>, </span>
+                                                            </if>
+                                                        </volist>
                                                         <span> and </span>
-                                                        <span class="llRemainingCount"></span>
+                                                        <span class="llRemainingCount">{$vo.likes}</span>
                                                         <span> others like this.</span>
                                                     </span>
                                                 </div>
@@ -386,7 +389,7 @@
                                                 </div>
                                                 <div class="scrollArea scrollAreaOpen scrollAreaInitialized">
                                                     <div class="scrollAreaContents">
-                                                        <volist name="vo['comment']" id="sub">
+                                                        <volist name="vo['comment']" id="sub" offset="0" length="3">
                                                             <div class="timelineComment">
                                                                 <a href="/{$sub.name}/">
                                                                     <div class="timelineCommentAvatar Image"
@@ -448,7 +451,7 @@
         });
         return false;
     });
-    $(".mediaMoreButton").on("click", function(){
+    $(".timelineLikeButton").on("click", function(){
         var that = this;
         var pid = $(this).parents(".timelineItem").data("userId");
         $.ajax({
@@ -457,7 +460,8 @@
             data: {'pid': pid}
         }).done(function (){
             username = $("strong").text();
-            $(that).parents(".timelineLikes").children("a.timelineLikeButton").addClass("timelineLiked");
+            $(that).addClass("timelineLiked");
+
         })
     })
 </script>
