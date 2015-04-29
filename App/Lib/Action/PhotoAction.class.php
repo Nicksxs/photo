@@ -100,7 +100,7 @@ class PhotoAction extends Action {
 		$map['pid'] = array('in', $pid_arr);
 		$cm = M("comment");
 		$cm_arr = $cm->where($map)->field("uid, pid, comment")->order('time desc')->select();
-        $comment_pid_arr = array();
+		$comment_pid_arr = array();
 		$comment_arr = array();
 		$i = 0;
 		$cm_uid_arr = array();
@@ -127,28 +127,34 @@ class PhotoAction extends Action {
 			//$res_arr[$value['pid']]['comment'][] = $value;
 		}
 
-        $Like = M("like");
-        $lk_arr = $Like->where($map)->field("uid, pid")->order("time desc")->select();
-        $lk_uid_arr = array();
-        foreach ($cm_arr as $value1) {
-            $lk_uid_arr[] = $value1['uid'];
-        }
-        $map = array();
-        $map['uid'] = array('in', $lk_uid_arr);
-        $user_map = array();
-        $user_arr = $User->where($map)->field("uid, name")->select();
-        foreach ($user_arr as $value2) {
-            $user_map[$value2['uid']] = $value2['name'];
-        }
+		$Like = M("like");
+		$map = array();
+		$map['pid'] = array('in', $pid_arr);
+		$lk_arr = $Like->where($map)->field("uid, pid")->order("time desc")->select();
+		$lk_uid_arr = array();
+		foreach ($cm_arr as $value1) {
+			$lk_uid_arr[] = $value1['uid'];
+		}
+		$map = array();
+		$map['uid'] = array('in', $lk_uid_arr);
+		$user_map = array();
+		$user_arr = $User->where($map)->field("uid, name")->select();
+		foreach ($user_arr as $value2) {
+			$user_map[$value2['uid']] = $value2['name'];
+		}
 
-        foreach ($lk_arr as &$value4) {
-            $value4['name'] = $user_map[$value4['uid']];
-            foreach ($res_arr as &$v1) {
-                if ($v1['pid'] == $value4['pid']) {
-                    $v['like'][] = $value4;
-                }
-            }
-        }
+		//print_r($lk_arr);
+		foreach ($lk_arr as &$value4) {
+			$value4['name'] = $user_map[$value4['uid']];
+			foreach ($res_arr as &$v1) {
+				if ($v1['pid'] == $value4['pid']) {
+					$v1['like'][] = $value4;
+					if ($value4['uid'] == $uid) {
+						$v1['islike'] = 100;
+					}
+				}
+			}
+		}
 
 		//echo "hello<br />";
 		//print_r($res_arr);
@@ -295,24 +301,24 @@ class PhotoAction extends Action {
 		$this->ajaxReturn("Yes");
 	}
 
-    public function submitLike($pid = '') {
-        $photo = M("photo");
-        $condition['pid'] = $pid;
-        $result = $photo->where($condition)->field('likes')->limit(1)->select();
-        $count = $result[0]['likes'];
-        $data['likes'] = $count + 1;
-        $photo->where($condition)->save($data);
+	public function submitLike($pid = '') {
+		$photo = M("photo");
+		$condition['pid'] = $pid;
+		$result = $photo->where($condition)->field('likes')->limit(1)->select();
+		$count = $result[0]['likes'];
+		$data['likes'] = $count + 1;
+		$photo->where($condition)->save($data);
 
-        $data = array();
-        $data['pid'] = $pid;
-        $data['uid'] = $_SESSION['uid'];
-        $phptime = time();
-        $mysqltime = date("Y-m-d H:i:s", $phptime);
-        $data['time'] = $mysqltime;
-        $Likes = M("like");
-        $Likes->add($data);
-        $this->ajaxReturn("Yes");
-    }
+		$data = array();
+		$data['pid'] = $pid;
+		$data['uid'] = $_SESSION['uid'];
+		$phptime = time();
+		$mysqltime = date("Y-m-d H:i:s", $phptime);
+		$data['time'] = $mysqltime;
+		$Likes = M("like");
+		$Likes->add($data);
+		$this->ajaxReturn("Yes");
+	}
 
 	public function follow($ruid = '', $f = '') {
 		# code...
