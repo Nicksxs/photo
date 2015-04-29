@@ -347,7 +347,7 @@
                                                 <!--<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">-->
                                             </div>
                                             <div class="timelineLikes">
-                                                <a class="timelineLikeButton" href="javacript:;" title="Toggle like">
+                                                <a class="timelineLikeButton <if condition="($vo.islike eq 100)">timelineLiked</if>" href="javacript:;" title="Toggle like">
                                                     <span class="i-like-pop timelineLikeButtonAnimation"></span>
                                                 </a>
                                                 <div class="mediaMoreButtonContainer">
