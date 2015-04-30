@@ -303,23 +303,40 @@ class PhotoAction extends Action {
 		$this->ajaxReturn("Yes");
 	}
 
-	public function submitLike($pid = '') {
-		$photo = M("photo");
-		$condition['pid'] = $pid;
-		$result = $photo->where($condition)->field('likes')->limit(1)->select();
-		$count = $result[0]['likes'];
-		$data['likes'] = $count + 1;
-		$photo->where($condition)->save($data);
+	public function submitLike($pid = '', $like = '') {
+        if($like == 'n'){
+            $photo = M("photo");
+            $condition['pid'] = $pid;
+            $result = $photo->where($condition)->field('likes')->limit(1)->select();
+            $count = $result[0]['likes'];
+            $data['likes'] = $count + 1;
+            $photo->where($condition)->save($data);
 
-		$data = array();
-		$data['pid'] = $pid;
-		$data['uid'] = $_SESSION['uid'];
-		$phptime = time();
-		$mysqltime = date("Y-m-d H:i:s", $phptime);
-		$data['time'] = $mysqltime;
-		$Likes = M("like");
-		$Likes->add($data);
-		$this->ajaxReturn("Yes");
+            $data = array();
+            $data['pid'] = $pid;
+            $data['uid'] = $_SESSION['uid'];
+            $phptime = time();
+            $mysqltime = date("Y-m-d H:i:s", $phptime);
+            $data['time'] = $mysqltime;
+            $Likes = M("like");
+            $Likes->add($data);
+            $this->ajaxReturn("Yes");
+        }else{
+            $photo = M("photo");
+            $condition['pid'] = $pid;
+            $result = $photo->where($condition)->field('likes')->limit(1)->select();
+            $count = $result[0]['likes'];
+            $data['likes'] = $count - 1;
+            $photo->where($condition)->save($data);
+
+            $condition = array();
+            $condition['pid'] = $pid;
+            $condition['uid'] = $_SESSION['uid'];
+            $Likes = M("like");
+            $Likes->where($condition)->delete();
+            $this->ajaxReturn("Yes");
+        }
+
 	}
 
 	public function follow($ruid = '', $f = '') {

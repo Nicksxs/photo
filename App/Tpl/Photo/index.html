@@ -432,7 +432,7 @@
 
 <link rel="stylesheet" href="__PUBLIC__/CSS/bootstrap.min.css">
 <link rel="stylesheet" href="__PUBLIC__/CSS/bootstrap-theme.min.css">
-<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+<script src="__PUBLIC__/js/jquery-1.11.2.min.js"></script>
 <script src="__PUBLIC__/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $(".timelineCommentForm").on("submit", function () {
@@ -454,15 +454,26 @@
     $(".timelineLikeButton").on("click", function(){
         var that = this;
         var pid = $(this).parents(".timelineItem").data("userId");
-        $.ajax({
-            type: 'post',
-            url: "__URL__/submitLike",
-            data: {'pid': pid}
-        }).done(function (){
-            username = $("strong").text();
-            $(that).addClass("timelineLiked");
+        if($(that).hasClass("timelineLiked")){
+            $.ajax({
+                type: 'post',
+                url: "__URL__/submitLike",
+                data: {'pid': pid, 'like': 'y'}
+            }).done(function (){
+                username = $("strong").text();
+                $(that).removeClass("timelineLiked");
+            })
+        }else{
+            $.ajax({
+                type: 'post',
+                url: "__URL__/submitLike",
+                data: {'pid': pid, 'like': 'n'}
+            }).done(function (){
+                username = $("strong").text();
+                $(that).addClass("timelineLiked");
+            })
+        }
 
-        })
     })
 </script>
 </body>
