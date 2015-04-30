@@ -151,7 +151,9 @@ class PhotoAction extends Action {
 					$v1['like'][] = $value4;
 					if ($value4['uid'] == $uid) {
 						$v1['islike'] = 100;
-					}
+					}else{
+                        $v1['islike'] = -1;
+                    }
 				}
 			}
 		}
