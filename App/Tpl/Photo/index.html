@@ -462,6 +462,11 @@
             }).done(function (){
                 username = $("strong").text();
                 $(that).removeClass("timelineLiked");
+                tDom = $(that).parents(".timelineLikes").children(".timelineLikeList").children(".LikeList");
+                tDom.find("a:eq(0)").remove();
+                Lcount = tDom.find("span.llRemainingCount").text();
+                Lcount = Lcount - 1;
+                tDom.find("span.llRemainingCount").text(Lcount);
             })
         }else{
             $.ajax({
@@ -471,6 +476,13 @@
             }).done(function (){
                 username = $("strong").text();
                 $(that).addClass("timelineLiked");
+                tDom = $(that).parents(".timelineLikes").children(".timelineLikeList").children(".LikeList");
+                tDom.find("span:eq(0)").append("<a class='llNameLink'>" + username + "</a>");
+                tDom.find("a:eq(2)").remove();
+                Lcount = tDom.find("span.llRemainingCount").text() + 1;
+                tDom.find("span.llRemainingCount").text(Lcount);
+
+
             })
         }
 
