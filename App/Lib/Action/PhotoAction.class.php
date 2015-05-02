@@ -93,9 +93,11 @@ class PhotoAction extends Action {
 
 		//将图片id放进一个数组
 		$pid_arr = array();
-		foreach ($res_arr as $value) {
-			$pid_arr[] = $value['pid'];
+		foreach ($res_arr as $value_tmp) {
+			$pid_arr[] = $value_tmp['pid'];
 		}
+
+
 		$map = array();
 		$map['pid'] = array('in', $pid_arr);
 		$cm = M("comment");
@@ -126,6 +128,8 @@ class PhotoAction extends Action {
 			}
 			//$res_arr[$value['pid']]['comment'][] = $value;
 		}
+
+
 
 		$Like = M("like");
 		$map = array();
@@ -159,7 +163,7 @@ class PhotoAction extends Action {
 		}
 
 		//echo "hello<br />";
-		//print_r($res_arr);
+//		print_r($res_arr);
 		//$this->display();
 		$this->assign('photo_array', $res_arr);
 		$this->assign('username', $username);
