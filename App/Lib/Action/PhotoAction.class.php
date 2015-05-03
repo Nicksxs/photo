@@ -220,7 +220,7 @@ class PhotoAction extends Action {
 		$m = memcache_init();
 		$photo = M("Photo");
 		$condition['uid'] = $uid;
-		$photo_arr = $photo->where($condition)->field("pid, uid, pname, path, impression")->order('time desc')->limit(0, 10)->select();
+		$photo_arr = $photo->where($condition)->field("pid, uid, pname, time, path, impression, comments, likes")->order('time desc')->limit(0, 10)->select();
 		$count = 0;
 		$photo_thumb_arr = array();
 		$i = 0;
@@ -283,6 +283,7 @@ class PhotoAction extends Action {
 		$this->assign('ruid', $ruid);
 		$this->assign('photo_array', $photo_arr);
 		$this->assign('photo_thumb_array', $photo_thumb_arr);
+//        print_r($photo_thumb_arr);
 		$this->display();
 	}
 

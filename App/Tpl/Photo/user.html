@@ -425,10 +425,10 @@
                                     <div class="pgmiFooter">
                                         <ul class="pgmiStats">
                                             <li class="pgmiStatsLikes">
-                                                <span></span>
+                                                <span>{$item.comments}</span>
                                             </li>
                                             <li class="pgmiStatsComments">
-                                                <span></span>
+                                                <span>{$item.likes}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -475,11 +475,16 @@
     $("a.pgmiImageLink").hover(
             function() {
                 $(this).addClass("pgmiImageLinkFocussed");
+                $(this).parents(".pgmiWrapper").find("time.pgmiDateHeader").addClass("pgmiDateHeaderFocussed");
+                $(this).parents(".pgmiWrapper").find("ul.pgmiStats").addClass("pgmiStatsFocussed");
             },
             function() {
                 $(this).removeClass("pgmiImageLinkFocussed");
+                $(this).parents(".pgmiWrapper").find("time.pgmiDateHeader").removeClass("pgmiDateHeaderFocussed");
+                $(this).parents(".pgmiWrapper").find("ul.pgmiStats").removeClass("pgmiStatsFocussed");
             }
     );
+
 </script>
 </body>
 </html>
