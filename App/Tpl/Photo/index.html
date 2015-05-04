@@ -347,8 +347,9 @@
                                                 <!--<img style="width: 300px; height:300px " src="{$vo.path}{$vo.pname}">-->
                                             </div>
                                             <div class="timelineLikes">
-                                                <a class="timelineLikeButton <if condition="($vo.islike eq 100)">timelineLiked</if>" href="javacript:;" title="Toggle like">
-                                                    <span class="i-like-pop timelineLikeButtonAnimation"></span>
+                                                <a class="timelineLikeButton <if condition=" ($vo.islike eq 100)">timelineLiked</if>
+                                                " href="javacript:;" title="Toggle like">
+                                                <span class="i-like-pop timelineLikeButtonAnimation"></span>
                                                 </a>
                                                 <div class="mediaMoreButtonContainer">
                                                     <a href="javascript:;" class="mediaMoreButton" title="More"
@@ -357,7 +358,8 @@
                                                 <div class="timelineLikeList">
                                                     <span class="LikeList">
                                                         <span></span>
-                                                        <volist name="vo['like']" id="sub0" key="k" offset="0" length="3">
+                                                        <volist name="vo['like']" id="sub0" key="k" offset="0"
+                                                                length="3">
                                                             <a class="llNameLink" href="/{$sub0.name}/">{$sub0.name}</a>
                                                             <if condition="($k lt 2)">
                                                                 <span>, </span>
@@ -430,6 +432,31 @@
         </div>
     </span>
 
+<div style="z-index: 100; display: none; position: fixed; left: 1133.5px; top: 22px;">
+    <div data-reactid=".3">
+        <div class="dWrapper" data-reactid=".3.0">
+            <div class="dContainer dRightAlign" data-reactid=".3.0.0">
+                <div class="ResponsiveBlock" data-reactid=".3.0.0.0">
+                    <div class="Dropdown" data-reactid=".3.0.0.0.0"><i data-reactid=".3.0.0.0.0.0"></i>
+                        <ul data-reactid=".3.0.0.0.0.1">
+                            <li data-reactid=".3.0.0.0.0.1.0"><a class="modal-catch-focus" href="/nicksxs/"
+                                                                 data-reactid=".3.0.0.0.0.1.0.0">View Profile</a></li>
+                            <li data-reactid=".3.0.0.0.0.1.2"><a href="/accounts/edit/" data-reactid=".3.0.0.0.0.1.2.0">Edit
+                                Profile</a></li>
+                            <li data-reactid=".3.0.0.0.0.1.3"><a href="/accounts/badges/"
+                                                                 data-reactid=".3.0.0.0.0.1.3.0">Badges</a></li>
+                            <li data-reactid=".3.0.0.0.0.1.4"><a href="/accounts/logout/"
+                                                                 data-reactid=".3.0.0.0.0.1.4.0">Log Out</a></li>
+                        </ul>
+                    </div>
+                    <div class="rbSensor" data-reactid=".3.0.0.0.$sensor">
+                        <iframe class="rbSensorFrame" data-reactid=".3.0.0.0.$sensor.0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <link rel="stylesheet" href="__PUBLIC__/CSS/bootstrap.min.css">
 <link rel="stylesheet" href="__PUBLIC__/CSS/bootstrap-theme.min.css">
 <script src="__PUBLIC__/js/jquery-1.11.2.min.js"></script>
@@ -451,15 +478,15 @@
         });
         return false;
     });
-    $(".timelineLikeButton").on("click", function(){
+    $(".timelineLikeButton").on("click", function () {
         var that = this;
         var pid = $(this).parents(".timelineItem").data("userId");
-        if($(that).hasClass("timelineLiked")){
+        if ($(that).hasClass("timelineLiked")) {
             $.ajax({
                 type: 'post',
                 url: "__URL__/submitLike",
                 data: {'pid': pid, 'like': 'y'}
-            }).done(function (){
+            }).done(function () {
                 username = $("strong").text();
                 $(that).removeClass("timelineLiked");
                 tDom = $(that).parents(".timelineLikes").children(".timelineLikeList").children(".LikeList");
@@ -468,12 +495,12 @@
                 Lcount = Lcount - 1;
                 tDom.find("span.llRemainingCount").text(Lcount);
             })
-        }else{
+        } else {
             $.ajax({
                 type: 'post',
                 url: "__URL__/submitLike",
                 data: {'pid': pid, 'like': 'n'}
-            }).done(function (){
+            }).done(function () {
                 username = $("strong").text();
                 $(that).addClass("timelineLiked");
                 tDom = $(that).parents(".timelineLikes").children(".timelineLikeList").children(".LikeList");
