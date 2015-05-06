@@ -5,6 +5,21 @@
  */
 class PhotoAction extends Action {
 
+    public $monthToWords = array(
+        '1' => 'January',
+        '2' => 'February',
+        '3' => 'March',
+        '4' => 'April',
+        '5' => 'May',
+        '6' => 'June',
+        '7' => 'July',
+        '8' => 'August',
+        '9' => 'September',
+        '10' => 'October',
+        '11' => 'November',
+        '12' => 'December'
+    );
+
 	public function _initialize() {
 		# code...
 		header("Content-Type:text/html; charset=utf-8");
@@ -225,10 +240,18 @@ class PhotoAction extends Action {
 		$photo_thumb_arr = array();
 		$i = 0;
 		$j = 0;
+        $IsNewMonth = '-1';
 		if (IS_SAE) {
 			foreach ($photo_arr as &$value) {
 				$value['path'] = '__PUBLIC__/' . $value['path'];
 				$value['thumb_pname'] = 'thumb_' . $value['pname'];
+                $phptime = strtotime($value['time']);
+                $value['day'] = date("d F Y", $phptime);
+                $month = date("F", $phptime);
+                if($IsNewMonth == '-1' || $month != $IsNewMonth){
+                    $value['month'] = date("F Y", $phptime);
+                }
+                $IsNewMonth = $month;
 				$count++;
 				if ($j == 5) {
 					$j = 0;
@@ -242,6 +265,13 @@ class PhotoAction extends Action {
 			foreach ($photo_arr as &$value) {
 				$value['path'] = '__PUBLIC__/' . substr($value['path'], 9);
 				$value['thumb_pname'] = 'thumb_' . $value['pname'];
+                $phptime = strtotime($value['time']);
+                $value['day'] = date("d F Y", $phptime);
+                $month = date("F", $phptime);
+                if($IsNewMonth == '-1' || $month != $IsNewMonth){
+                    $value['month'] = date("F Y", $phptime);
+                }
+                $IsNewMonth = $month;
 				$count++;
 				if ($j == 5) {
 					$j = 0;
@@ -283,7 +313,7 @@ class PhotoAction extends Action {
 		$this->assign('ruid', $ruid);
 		$this->assign('photo_array', $photo_arr);
 		$this->assign('photo_thumb_array', $photo_thumb_arr);
-//        print_r($photo_thumb_arr);
+//        print_r($photo_arr);
 		$this->display();
 	}
 
