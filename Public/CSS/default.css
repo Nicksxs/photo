@@ -3895,7 +3895,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
 }
 
 .mediaMoreButton {
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/feed/feed-assets.png") no-repeat 7px -94px
+    background: url("http://nicksxs01.qiniudn.com/memory_feed-assets.png") no-repeat 7px -94px
 }
 
 .timelineLikes .mediaMoreButton {
@@ -7012,7 +7012,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
     right: 0;
     bottom: 0;
     left: 0;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/p/glyph-heart-pop-big.png") no-repeat 50% 50%;
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-heart-pop-big.png") no-repeat 50% 50%;
     z-index: 100;
     background-size: 40% 40%;
     opacity: 0;
@@ -7101,7 +7101,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
     height: 40px;
     border-bottom: 1px solid #ddd;
     margin: 1px 0 -1px;
-    background: #e6e6e6 url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/bg/white-gradient-100px.png") repeat-x 50% 50%;
+    background: #e6e6e6 url("http://nicksxs01.qiniudn.com/memory_white-gradient-100px.png") repeat-x 50% 50%;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .15), 0 0 3px rgba(0, 0, 0, .1)
 }
 
@@ -7130,7 +7130,7 @@ html.android .dropdown-open .dropdown, html.no-csstransitions .dropdown-open .dr
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/feed/feed-assets.png") no-repeat 8px 6px;
+    background: url("http://nicksxs01.qiniudn.com/memory_feed-assets.png") no-repeat 8px 6px;
     border-right: 1px solid #ddd;
     box-shadow: 1px 0 0 rgba(255, 255, 255, .9)
 }
@@ -8589,7 +8589,7 @@ data-isostyle-id
 }
 
 .lbAnimation {
-    background: url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/p/glyph-heart-pop-big.png") no-repeat 50% 50%;
+    background: url("http://nicksxs01.qiniudn.com/memory_glyph-heart-pop-big.png") no-repeat 50% 50%;
     display: block;
     position: absolute;
     left: -1px;
@@ -9983,7 +9983,7 @@ html .ButtonActive.followButtonFollowing, .followButtonPhoto .ButtonActive.follo
 
 
 .Stats {
-    background: #ddd url("//instagramstatic-a.akamaihd.net/bluebar/5021840/images/bg/white-gradient-100px.png") repeat-x 50% 50%;
+    background: #ddd url("http://nicksxs01.qiniudn.com/memory_white-gradient-100px.png") repeat-x 50% 50%;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .08), inset 0 1px 0 rgba(255, 255, 255, .8);
