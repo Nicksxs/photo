@@ -326,8 +326,13 @@
                                                 <div class="timelineBookmarkInfo">
                                                     <a class="timelineBookmarkInfoUsername"
                                                        href="__URL__/user/uid/{$vo.uid}">
-                                                        <span>{$vo.name}</span>
+                                                        {$vo.name}
                                                     </a>
+                                                    <span class="timelineBookmarkInfoTimestamp">
+                                                        <span class="timelineBookmarkInfoTimestampContent">
+                                                            {$vo.elapse}
+                                                        </span>
+                                                    </span>
                                                 </div>
                                             </div>
 

@@ -94,15 +94,23 @@ class PhotoAction extends Action {
 		foreach ($user_arr as $value) {
 			$user_map[$value['uid']] = $value['name'];
 		}
+
+        $now_time = time();
 		if (IS_SAE) {
 			foreach ($res_arr as &$value) {
 				$value['name'] = $user_map[$value['uid']];
 				$value['path'] = '__PUBLIC__/' . $value['path'];
+                $elapse = strtotime($value['time']);
+                $diff = $now_time - $elapse;
+                $value['elapse'] = $this->time2Units($diff);
 			}
 		} else {
 			foreach ($res_arr as &$value) {
 				$value['name'] = $user_map[$value['uid']];
 				$value['path'] = '__PUBLIC__/' . substr($value['path'], 9);
+                $elapse = strtotime($value['time']);
+                $diff = $now_time - $elapse;
+                $value['elapse'] = $this->time2Units($diff);
 			}
 		}
 
@@ -404,4 +412,50 @@ class PhotoAction extends Action {
 			//$this->ajaxReturn("Yes");
 		}
 	}
+
+    private function time2Units ($time)
+    {
+        $year   = floor($time / 60 / 60 / 24 / 365);
+        $time  -= $year * 60 * 60 * 24 * 365;
+        $month  = floor($time / 60 / 60 / 24 / 30);
+        $time  -= $month * 60 * 60 * 24 * 30;
+        $week   = floor($time / 60 / 60 / 24 / 7);
+        $time  -= $week * 60 * 60 * 24 * 7;
+        $day    = floor($time / 60 / 60 / 24);
+        $time  -= $day * 60 * 60 * 24;
+        $hour   = floor($time / 60 / 60);
+        $time  -= $hour * 60 * 60;
+        $minute = floor($time / 60);
+        $time  -= $minute * 60;
+        $second = $time;
+        $elapse = '';
+
+        $unitArr = array('年'  =>'year', '个月'=>'month',  '周'=>'week', '天'=>'day',
+            '小时'=>'hour', '分钟'=>'minute', '秒'=>'second'
+        );
+
+        foreach ( $unitArr as $cn => $u )
+        {
+            if ( $$u > 1 )
+            {
+                $elapse = $$u . " " .$u . "s";
+                break;
+            }elseif ( $$u > 0 )
+            {
+                $elapse = $$u . " " . $u;
+                break;
+            }
+        }
+
+        /*foreach ( $unitArr as $cn => $u )
+        {
+            if ( $$u > 0 )
+            {
+                $elapse = $$u . $cn;
+                break;
+            }
+        }*/
+
+        return $elapse." ago";
+    }
 }
