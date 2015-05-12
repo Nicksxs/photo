@@ -4,22 +4,7 @@
  * show the fhoto
  */
 class PhotoAction extends Action {
-
-    public $monthToWords = array(
-        '1' => 'January',
-        '2' => 'February',
-        '3' => 'March',
-        '4' => 'April',
-        '5' => 'May',
-        '6' => 'June',
-        '7' => 'July',
-        '8' => 'August',
-        '9' => 'September',
-        '10' => 'October',
-        '11' => 'November',
-        '12' => 'December'
-    );
-
+    
 	public function _initialize() {
 		# code...
 		header("Content-Type:text/html; charset=utf-8");
