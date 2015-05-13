@@ -4,7 +4,7 @@
  * show the fhoto
  */
 class PhotoAction extends Action {
-    
+
 	public function _initialize() {
 		# code...
 		header("Content-Type:text/html; charset=utf-8");
@@ -110,15 +110,15 @@ class PhotoAction extends Action {
 		$map['pid'] = array('in', $pid_arr);
 		$cm = M("comment");
 		$cm_arr = $cm->where($map)->field("uid, pid, comment")->order('time desc')->select();
-		$comment_pid_arr = array();
-		$comment_arr = array();
+		/*$comment_pid_arr = array();
+		$comment_arr = array();*/
 		$i = 0;
 		$cm_uid_arr = array();
 		foreach ($cm_arr as $value1) {
 			$cm_uid_arr[] = $value1['uid'];
 		}
 		$map = array();
-		$user_arr = array();
+//		$user_arr = array();
 		$map['uid'] = array('in', $cm_uid_arr);
 		$user_arr = $User->where($map)->field("uid, name")->select();
 		$user_map = array();
