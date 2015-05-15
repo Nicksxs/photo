@@ -14,6 +14,16 @@ class IndexAction extends Action {
 	public function index() {
 		$m = memcache_init();
 		$this->assign('signup', $_global_arr['signup']);
+		if (isset($_COOKIE['login'])) {
+			# code...
+			$stat = M("stat");
+			$condition['cookie'] = $_COOKIE['login'];
+			$res = $stat->where($condition)->limit(1)->select();
+			if($res[0]['status'] == "login"){
+				$_SESSION['uid'] = $res[0]['uid'];
+				$this->redirect('Photo/index', '', 0, '');
+			}
+		}
 		if (isset($_POST['username']) && isset($_POST['password']) && $_POST['username'] != '' && $_POST['password'] != '') {
 			# code...
 			$User = M('User');
@@ -23,6 +33,14 @@ class IndexAction extends Action {
 			if (isset($res[0])) {
 				//$m->set('uid', $res[0]['uid']);
 				$_SESSION['uid'] = $res[0]['uid'];
+				$logincookie = md5($_POST['username'].$_POST['password']);
+				$domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;  
+				setcookie('login', $logincookie, time()+60*60*24*365, '/', $domain, false);  
+				$stat = M("stat");
+				$data['uid'] = $res[0]['uid'];
+				$data['cookie']  = $logincookie;
+				$data['status'] = "login";
+				$stat->add($data);
 				$this->redirect('Photo/index', '', 0, '');
 				exit();
 				//echo "<strong>Hello ".$res[0]['name']."</strong>";
@@ -411,9 +429,18 @@ class IndexAction extends Action {
 					var_dump($mail->errno(), $mail->errmsg());
 				} else {
 					//echo "邮件发送成功，请更改源码，将邮箱改为自己的测试";
+					$logincookie = md5($_POST['username'].$_POST['password']);
+					$domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;  
+					setcookie('login', $logincookie, time()+60*60*24*365, '/', $domain, false);
+					$stat = M("stat");
+					$data['uid'] = $res[0]['uid'];
+					$data['cookie']  = $logincookie;
+					$data['status'] = "login";
+					$stat->add($data);
 					$this->assign('error_message', "注册成功，请登录");
 					$this->assign('signup', 0);
-					$this->display('index');
+					$this->redirect('Photo/index', '', 0, '');
+					//$this->display('index');
 				}
 			}
 		} else {
