@@ -95,9 +95,11 @@ class PhotoAction extends Action {
 				$value['path'] = '__PUBLIC__/' . substr($value['path'], 9);
                 $elapse = strtotime($value['time']);
                 $diff = $now_time - $elapse;
+                //echo $diff;
                 $value['elapse'] = $this->time2Units($diff);
 			}
 		}
+		//exit();
 
 		//将图片id放进一个数组
 		$pid_arr = array();

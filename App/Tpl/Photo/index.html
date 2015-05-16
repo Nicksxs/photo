@@ -437,7 +437,7 @@
         </div>
     </span>
 
-<div style="z-index: 100; display: none; position: fixed; left: 1133.5px; top: 22px;">
+<div class="DropdownMenu" style="z-index: 100; display: none; position: fixed; left: 1133.5px; top: 22px;">
     <div data-reactid=".3">
         <div class="dWrapper" data-reactid=".3.0">
             <div class="dContainer dRightAlign" data-reactid=".3.0.0">
@@ -519,6 +519,18 @@
         }
 
     })
+    $("#_dropdownContext0").on("click", function () {
+        // body...
+        //$(".DropdownMenu").css('display', 'block');
+        //$(".Dropdown").addClass('dOpen');
+        $(".DropdownMenu").toggle();
+        $(".Dropdown").toggleClass("dOpen");
+    })
+    // $(document).on("click", function () {
+    //     // body...
+    //     $(".DropdownMenu").toggle();
+    //     $(".Dropdown").toggleClass("dOpen");
+    // })
 </script>
 </body>
 </html>
