@@ -3,14 +3,14 @@ Navicat MySQL Data Transfer
 
 Source Server         : local
 Source Server Version : 50617
-Source Host           : localhost:3306
-Source Database       : memory
+Source Host           : 127.0.0.1:3306
+Source Database       : photo
 
 Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2015-05-14 19:01:44
+Date: 2015-05-17 21:13:22
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,7 +26,7 @@ CREATE TABLE `tp_comment` (
   `comment` varchar(120) DEFAULT NULL,
   `time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '评论生成时间',
   PRIMARY KEY (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_like
@@ -38,7 +38,7 @@ CREATE TABLE `tp_like` (
   `uid` int(11) DEFAULT NULL COMMENT '给照片点赞的用户id',
   `time` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '点赞时间',
   PRIMARY KEY (`lid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_photo
@@ -55,7 +55,7 @@ CREATE TABLE `tp_photo` (
   `comments` int(8) DEFAULT '0' COMMENT '评论数',
   `likes` int(8) DEFAULT '0' COMMENT '点赞数',
   UNIQUE KEY `pid` (`pid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_relationship
@@ -66,6 +66,19 @@ CREATE TABLE `tp_relationship` (
   `ruid` int(11) unsigned DEFAULT NULL COMMENT '被关注者',
   KEY `uid` (`uid`,`ruid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for tp_stat
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_stat`;
+CREATE TABLE `tp_stat` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `uid` int(11) NOT NULL,
+  `cookie` varchar(32) NOT NULL,
+  `status` enum('logout','login') DEFAULT NULL,
+  `time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for tp_user
@@ -82,4 +95,4 @@ CREATE TABLE `tp_user` (
   `token` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`uid`),
   KEY `phone` (`phone`,`email`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='用户基础表';
+) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='用户基础表';
