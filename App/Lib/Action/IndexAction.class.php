@@ -433,6 +433,8 @@ class IndexAction extends Action {
 					$domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false;  
 					setcookie('login', $logincookie, time()+60*60*24*365, '/', $domain, false);
 					$stat = M("stat");
+                    $res = $User->where($condition)->limit(1)->select();
+                    $_SESSION['uid'] = $res[0]['uid'];
 					$data['uid'] = $res[0]['uid'];
 					$data['cookie']  = $logincookie;
 					$data['status'] = "login";

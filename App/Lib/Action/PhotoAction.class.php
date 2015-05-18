@@ -432,6 +432,9 @@ class PhotoAction extends Action {
                 $elapse = $$u . " " . $u;
                 break;
             }
+            if($$u == 0 && $u == 'seond'){
+                $elapse = '1 seond';
+            }
         }
 
         /*foreach ( $unitArr as $cn => $u )
