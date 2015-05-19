@@ -146,7 +146,7 @@ class PhotoAction extends Action {
 		$map['pid'] = array('in', $pid_arr);
 		$lk_arr = $Like->where($map)->field("uid, pid")->order("time desc")->select();
 		$lk_uid_arr = array();
-		foreach ($cm_arr as $value1) {
+		foreach ($lk_arr as $value1) {
 			$lk_uid_arr[] = $value1['uid'];
 		}
 		$map = array();
@@ -173,7 +173,7 @@ class PhotoAction extends Action {
 		}
 
 		//echo "hello<br />";
-//		print_r($res_arr);
+		print_r($res_arr);
 		//$this->display();
 		$this->assign('photo_array', $res_arr);
 		$this->assign('username', $username);

@@ -361,6 +361,7 @@
                                                        role="button"></a>
                                                 </div>
                                                 <div class="timelineLikeList">
+                                                    <if condition="$vo.likes gt 3">
                                                     <span class="LikeList">
                                                         <span></span>
                                                         <volist name="vo['like']" id="sub0" key="k" offset="0"
@@ -374,6 +375,30 @@
                                                         <span class="llRemainingCount">{$vo.likes}</span>
                                                         <span> others like this.</span>
                                                     </span>
+                                                    <elseif condition="$vo.likes gt 1" />
+                                                    <span class="LikeList">
+                                                        <span></span>
+                                                        <volist name="vo['like']" id="sub0" key="k" offset="0"
+                                                                length="3">
+                                                            <a class="llNameLink" href="/{$sub0.name}/">{$sub0.name}</a>
+                                                            <if condition="($k lt 2)">
+                                                                <span>, </span>
+                                                            </if>
+                                                        </volist>
+                                                        <span> like this.</span>
+                                                    </span>
+                                                    <elseif condition="$vo.likes gt 0" />
+                                                    <span class="LikeList">
+                                                        <span></span>
+                                                        <volist name="vo['like']" id="sub0" key="k" offset="0"
+                                                                length="3">
+                                                            <a class="llNameLink" href="/{$sub0.name}/">{$sub0.name}</a>
+                                                        </volist>
+                                                        <span> likes this.</span>
+                                                    </span>
+                                                    <else />
+                                                    <span class="noLikes"></span>
+                                                    </if>
                                                 </div>
                                             </div>
                                             <div class="timelineComments">
