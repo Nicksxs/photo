@@ -173,7 +173,7 @@ class PhotoAction extends Action {
 		}
 
 		//echo "hello<br />";
-		print_r($res_arr);
+		//print_r($res_arr);
 		//$this->display();
 		$this->assign('photo_array', $res_arr);
 		$this->assign('username', $username);
