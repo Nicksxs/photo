@@ -285,6 +285,8 @@ class PhotoAction extends Action {
 				}
 			}
 		}
+		unset($value);
+
 		$uid = $_SESSION['uid'];
 		//$uid = $m->get('uid');
 		$condition['uid'] = $uid;
