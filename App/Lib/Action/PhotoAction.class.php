@@ -79,6 +79,7 @@ class PhotoAction extends Action {
 		foreach ($user_arr as $value) {
 			$user_map[$value['uid']] = $value['name'];
 		}
+		unset($value);
 
         $now_time = time();
 		if (IS_SAE) {
@@ -99,6 +100,7 @@ class PhotoAction extends Action {
                 $value['elapse'] = $this->time2Units($diff);
 			}
 		}
+		unset($value);
 		//exit();
 
 		//将图片id放进一个数组
@@ -116,54 +118,59 @@ class PhotoAction extends Action {
 		$comment_arr = array();*/
 		$i = 0;
 		$cm_uid_arr = array();
-		foreach ($cm_arr as $value1) {
-			$cm_uid_arr[] = $value1['uid'];
+		foreach ($cm_arr as $value) {
+			$cm_uid_arr[] = $value['uid'];
 		}
+		unset($value);
+
 		$map = array();
 //		$user_arr = array();
 		$map['uid'] = array('in', $cm_uid_arr);
 		$user_arr = $User->where($map)->field("uid, name")->select();
 		$user_map = array();
-		foreach ($user_arr as $value2) {
-			$user_map[$value2['uid']] = $value2['name'];
+		foreach ($user_arr as $value) {
+			$user_map[$value['uid']] = $value['name'];
 		}
+		unset($value);
 
-		foreach ($cm_arr as &$value3) {
-			$value3['name'] = $user_map[$value3['uid']];
+		foreach ($cm_arr as &$value) {
+			$value['name'] = $user_map[$value['uid']];
 			foreach ($res_arr as &$v) {
 				# code...
-				if ($v['pid'] == $value3['pid']) {
-					$v['comment'][] = $value3;
+				if ($v['pid'] == $value['pid']) {
+					$v['comment'][] = $value;
 				}
 			}
 			//$res_arr[$value['pid']]['comment'][] = $value;
 		}
-
-
+		unset($value);
 
 		$Like = M("like");
 		$map = array();
 		$map['pid'] = array('in', $pid_arr);
 		$lk_arr = $Like->where($map)->field("uid, pid")->order("time desc")->select();
 		$lk_uid_arr = array();
-		foreach ($lk_arr as $value1) {
-			$lk_uid_arr[] = $value1['uid'];
+		foreach ($lk_arr as $value) {
+			$lk_uid_arr[] = $value['uid'];
 		}
+		unset($value);
+
 		$map = array();
 		$map['uid'] = array('in', $lk_uid_arr);
 		$user_map = array();
 		$user_arr = $User->where($map)->field("uid, name")->select();
-		foreach ($user_arr as $value2) {
-			$user_map[$value2['uid']] = $value2['name'];
+		foreach ($user_arr as $value) {
+			$user_map[$value['uid']] = $value['name'];
 		}
+		unset($value);
 
 		//print_r($lk_arr);
-		foreach ($lk_arr as &$value4) {
-			$value4['name'] = $user_map[$value4['uid']];
+		foreach ($lk_arr as &$value) {
+			$value['name'] = $user_map[$value['uid']];
 			foreach ($res_arr as &$v1) {
-				if ($v1['pid'] == $value4['pid']) {
-					$v1['like'][] = $value4;
-					if ($value4['uid'] == $uid) {
+				if ($v1['pid'] == $value['pid']) {
+					$v1['like'][] = $value;
+					if ($value['uid'] == $uid) {
 						$v1['islike'] = 100;
 					}else{
                         $v1['islike'] = -1;
@@ -171,6 +178,7 @@ class PhotoAction extends Action {
 				}
 			}
 		}
+		unset($value);
 
 		//echo "hello<br />";
 		//print_r($res_arr);
