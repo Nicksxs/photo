@@ -234,7 +234,9 @@ class PhotoAction extends Action {
 	public function user($uid) {
 		# code...
 		//echo $uid;
+		$self_uid = $_SESSION['uid'];
 		$ruid = $uid;
+		$Is_Self = $self_uid == $ruid ? 1 : 0;
 		$m = memcache_init();
 		$photo = M("Photo");
 		$condition['uid'] = $uid;
@@ -310,6 +312,7 @@ class PhotoAction extends Action {
 		$condition = array();
 		$condition['uid'] = $ruid;
 		$fgcount = $re->where($condition)->count();
+		$this->assign('is_self', $Is_Self);
 		$this->assign('f', $f);
 		$this->assign('followers', $fdcount);
 		$this->assign('following', $fgcount);
