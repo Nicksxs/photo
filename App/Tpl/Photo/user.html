@@ -359,14 +359,16 @@
                             <span>
                                 <span></span>
                                     <span class="FollowButtonContainer">
+                                        <if condition = "$is_self eq '1'">
+                                        <!-- <span class="avatar-action"> -->
+                                                <a class="followButtonRequested edit-profile-button Button -cx-PRIVATE-BaseButton__root" style="text-align : center;">Edit Profile</a>
+                                        <!-- </span> -->
+                                        <else />
                                         <span class="followButtonActions">
-                                            <if condition = "$is_self eq '1'">
-                                                <a class="EditProfileButton Button -cx-PRIVATE-BaseButton__root">Edit Profile</a>
-                                            <else />
                                             <a class="FollowButton <if condition="$f eq 'y'">followButtonFollowing<else />followButtonFollow</if> Button -cx-PRIVATE-BaseButton__root"
                                    href="javascript:;"><if condition="$f eq 'y'">following<else />follow</if></a>
-                                            </if>
                                         </span>
+                                        </if>
                                         <span class="followButtonIndicator" style="display: none;">
                                             <div class="spiSpinner spiSmall"></div>
                                         </span>
