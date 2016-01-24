@@ -378,6 +378,8 @@ class IndexAction extends Action {
 	}
 
 	public function login() {
+		echo json_encode($_POST);
+		exit;
 		$m = memcache_init();
 		$User = M('User');
 		$condition['name'] = $_POST['username'];
