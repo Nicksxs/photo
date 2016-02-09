@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -119,15 +119,14 @@
 		<!-- </div> -->
 		<!-- </div> -->
 		<div class="login">
-		<if condition="$signup eq 0">
-			<!-- <div class="row">
+		<?php if($signup == 0): ?><!-- <div class="row">
 			<div class="col-md-4"></div>
 			<div class="col-md-4 login-man" style="margin-top: 20px; border: 1px solid #042845; padding-top: 20px">
 				<form class="form-horizontal" action="__URL__/index" method="post">
 					<div class="form-group">
 						<label for="inputUsername" class="col-sm-3 control-label">用户名</label>
 						<div class="col-sm-9">
-							<input type="text" class="form-control" name="username" id="inputUsername" placeholder="Username" value="{$try_login_name}">
+							<input type="text" class="form-control" name="username" id="inputUsername" placeholder="Username" value="<?php echo ($try_login_name); ?>">
 						</div>
 					</div>
 					<div class="form-group">
@@ -152,13 +151,13 @@
 					</div>
 				</form>
 				<div class="err_msg">
-						<p class="text-center">{$error_message}</p>
+						<p class="text-center"><?php echo ($error_message); ?></p>
 				</div>
 			</div>
 			<div class="col-md-4"></div> -->
 			<form class="account" id="formSignin" action="__URL__/index" method="post">
     			<div class="form-group">
-    			  <input type="text" class="form-control input-lg" name="username" placeholder="用户名" value="{$try_login_name}">
+    			  <input type="text" class="form-control input-lg" name="username" placeholder="用户名" value="<?php echo ($try_login_name); ?>">
     			</div>
     			<div class="form-group">
     			  <input type="password" class="form-control input-lg" name="password" placeholder="密码">
@@ -167,12 +166,12 @@
     			<p class="account-footer">
     			  没有账号？<a href="__URL__/signup">创建一个账号</a>
     			</p>
-    			<p class="text-center">{$error_message}</p>
+    			<p class="text-center"><?php echo ($error_message); ?></p>
 			</form>
-		<else />
+		<?php else: ?>
 			<form class="account" id="formSignup" action="__URL__/signup" method="post">
     			<div class="form-group">
-      				<input type="text" class="form-control input-lg" name="username" placeholder="用户名" value="{$try_login_name}">
+      				<input type="text" class="form-control input-lg" name="username" placeholder="用户名" value="<?php echo ($try_login_name); ?>">
     			</div>
     			<div class="form-group">
       				<input type="text" class="form-control input-lg" name="email" placeholder="电子邮件地址">
@@ -184,9 +183,8 @@
     			<p class="account-footer">
       				已有账号？<a href="__URL__/index">立即登录</a>
     			</p>
-    			<p class="text-center">{$error_message}</p>
-  			</form>
-	    </if>
+    			<p class="text-center"><?php echo ($error_message); ?></p>
+  			</form><?php endif; ?>
 		</div>
 	</div>
 	</div>
